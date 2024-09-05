@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/lib/type.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1716719422992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1716719422992,
+            "name": "Commit-0",
+            "content": "import { z } from 'zod'\r\n\r\nexport const EditUserProfileSchema = z.object({\r\n    email: z.string().email('Required'),\r\n    name: z.string().min(1, 'Required'),\r\n  })"
+        }
+    ]
+}

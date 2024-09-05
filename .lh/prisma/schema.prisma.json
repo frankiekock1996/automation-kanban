@@ -1,0 +1,22 @@
+{
+    "sourceFile": "prisma/schema.prisma",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1716732651144,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1716733019266,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,12 +11,15 @@\n datasource db {\n   provider = \"postgresql\"\n   url      = env(\"DATABASE_URL\")\n }\n-generator client {\n-  provider = \"prisma-client-js\"\n-}\n+model User {\n+  id Int @id @default(autoincrement())\n \n-datasource db {\n-  provider = \"postgresql\"\n-  url      = env(\"DATABASE_URL\")\n+  clerkId      String  @unique\n+  name         String?\n+  email        String  @unique\n+  profileImage String?\n+  createdAt        DateTime @default(now())\n+  updatedAt        DateTime @updatedAt\n+\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1716732651144,
+            "name": "Commit-0",
+            "content": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}"
+        }
+    ]
+}

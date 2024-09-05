@@ -1,0 +1,22 @@
+{
+    "sourceFile": "prisma/seed.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1722150823341,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1722151260978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,10 @@\n-// prisma/seed.ts\r\n import { PrismaClient } from '@prisma/client';\r\n+import dotenv from 'dotenv';\r\n+\r\n+// Load environment variables from .env file\r\n+dotenv.config();\r\n+\r\n const prisma = new PrismaClient();\r\n \r\n async function main() {\r\n   await prisma.user.create({\r\n"
+                }
+            ],
+            "date": 1722150823341,
+            "name": "Commit-0",
+            "content": "// prisma/seed.ts\r\nimport { PrismaClient } from '@prisma/client';\r\nconst prisma = new PrismaClient();\r\n\r\nasync function main() {\r\n  await prisma.user.create({\r\n    data: {\r\n      clerkId: 'example-clerk-id',\r\n      name: 'Example Name',\r\n      email: 'example@example.com',\r\n      profileImage: 'https://example.com/profile.jpg',\r\n    },\r\n  });\r\n}\r\n\r\nmain()\r\n  .catch((e) => {\r\n    console.error(e);\r\n    process.exit(1);\r\n  })\r\n  .finally(async () => {\r\n    await prisma.$disconnect();\r\n  });\r\n"
+        }
+    ]
+}

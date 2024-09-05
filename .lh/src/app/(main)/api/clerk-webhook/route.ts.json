@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/clerk-webhook/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1720864196181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1720864196181,
+            "name": "Commit-0",
+            "content": "import { db } from '@/lib/db'\r\nimport { NextResponse } from 'next/server'\r\n\r\nexport async function POST(req: Request) {\r\n  try {\r\n    const body = await req.json()\r\n    const { id, email_addresses, first_name, image_url } = body?.data\r\n\r\n    const email = email_addresses[0]?.email_address\r\n    console.log('✅', body)\r\n\r\n    await db.user.upsert({\r\n      where: { clerkId: id },\r\n      update: {\r\n        email,\r\n        name: first_name,\r\n        profileImage: image_url,\r\n      },\r\n      create: {\r\n        clerkId: id,\r\n        email,\r\n        name: first_name || '',\r\n        profileImage: image_url || '',\r\n      },\r\n    })\r\n    return new NextResponse('User updated in database successfully', {\r\n      status: 200,\r\n    })\r\n  } catch (error) {\r\n    console.error('Error updating database:', error)\r\n    return new NextResponse('Error updating user in database', { status: 500 })\r\n  }\r\n}"
+        }
+    ]
+}

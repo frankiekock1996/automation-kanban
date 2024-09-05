@@ -1,0 +1,26 @@
+{
+    "sourceFile": "next.config.mjs",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1721549757446,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1721550637891,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,12 @@\n         {\n           protocol: 'https',\n           hostname: 'img.clerk.com',\n         },\n-        {\n-          protocol: 'https',\n-          hostname: 'ucarecdn.com',\n-        },\n+        // {\n+        //   protocol: 'https',\n+        //   hostname: 'ucarecdn.com',\n+        // },\n       ],\n     },\n   }\n   \n"
+                },
+                {
+                    "date": 1721570998495,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,12 @@\n         {\n           protocol: 'https',\n           hostname: 'img.clerk.com',\n         },\n-        // {\n-        //   protocol: 'https',\n-        //   hostname: 'ucarecdn.com',\n-        // },\n+        {\n+          protocol: 'https',\n+          hostname: 'ucarecdn.com',\n+        },\n       ],\n     },\n   }\n   \n"
+                }
+            ],
+            "date": 1721549757446,
+            "name": "Commit-0",
+            "content": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n    images: {\n      remotePatterns: [\n        {\n          protocol: 'https',\n          hostname: 'img.clerk.com',\n        },\n        {\n          protocol: 'https',\n          hostname: 'ucarecdn.com',\n        },\n      ],\n    },\n  }\n  \n  export default nextConfig"
+        }
+    ]
+}

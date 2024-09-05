@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(auth)/sign-in/[[...sign-in]]/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1721048321227,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1721048321227,
+            "name": "Commit-0",
+            "content": "import { SignIn } from '@clerk/nextjs'\r\n\r\nexport default function Page() {\r\n  return <SignIn />\r\n}"
+        }
+    ]
+}
