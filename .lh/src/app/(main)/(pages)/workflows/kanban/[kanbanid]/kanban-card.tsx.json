@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/[kanbanid]/kanban-card.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1728798453256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1728805421914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,9 +60,9 @@\n         </form>\r\n       </CardContent>\r\n       <CardFooter className=\"flex justify-between\">\r\n         <Button variant=\"outline\" onClick={onCancel}>Cancel</Button>\r\n-        <Button onClick={handleSubmit}>Add Card</Button>\r\n+        <Button onClick={handleSubmit}>Deploy</Button>\r\n       </CardFooter>\r\n     </Card>\r\n   )\r\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1729170193465,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,11 +23,11 @@\n   const [serviceTag, setServiceTag] = useState(\"\");\r\n \r\n   const handleSubmit = (e: React.FormEvent) => {\r\n     e.preventDefault();\r\n-    if (orderNumber && serviceTag) {\r\n-      onSubmit(orderNumber, serviceTag); \r\n-    }\r\n+    onSubmit(orderNumber, serviceTag);\r\n+    setOrderNumber('');\r\n+    setServiceTag('');\r\n   };\r\n \r\n   return (\r\n     <Card className=\"w-[350px]\">\r\n"
+                },
+                {
+                    "date": 1729341281639,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,19 +12,24 @@\n } from \"@/components/ui/card\"\r\n import { Input } from \"@/components/ui/input\"\r\n import { Label } from \"@/components/ui/label\"\r\n \r\n+type ColumnType = 'backlog' | 'todo' | 'doing' | 'done';\r\n+\r\n interface CardWithFormProps {\r\n   onSubmit: (orderNumber: string, serviceTag: string) => void;\r\n   onCancel: () => void;\r\n+  column:ColumnType; \r\n }\r\n \r\n-export function CardWithForm({ onSubmit, onCancel }: CardWithFormProps) {\r\n+export const CardWithForm: React.FC<CardWithFormProps> = ({ onSubmit, onCancel, column }) => {\r\n   const [orderNumber, setOrderNumber] = useState(\"\");\r\n   const [serviceTag, setServiceTag] = useState(\"\");\r\n \r\n   const handleSubmit = (e: React.FormEvent) => {\r\n     e.preventDefault();\r\n+    console.log(`CardWithForm: Submitting form for column ${column}`);\r\n+    console.log(`CardWithForm: Order Number - ${orderNumber}, Service Tag - ${serviceTag}`);\r\n     onSubmit(orderNumber, serviceTag);\r\n     setOrderNumber('');\r\n     setServiceTag('');\r\n   };\r\n"
+                }
+            ],
+            "date": 1728798453256,
+            "name": "Commit-0",
+            "content": "'use client'\r\n\r\nimport React, { useState } from \"react\"\r\nimport { Button } from \"@/components/ui/button\"\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardDescription,\r\n  CardFooter,\r\n  CardHeader,\r\n  CardTitle,\r\n} from \"@/components/ui/card\"\r\nimport { Input } from \"@/components/ui/input\"\r\nimport { Label } from \"@/components/ui/label\"\r\n\r\ninterface CardWithFormProps {\r\n  onSubmit: (orderNumber: string, serviceTag: string) => void;\r\n  onCancel: () => void;\r\n}\r\n\r\nexport function CardWithForm({ onSubmit, onCancel }: CardWithFormProps) {\r\n  const [orderNumber, setOrderNumber] = useState(\"\");\r\n  const [serviceTag, setServiceTag] = useState(\"\");\r\n\r\n  const handleSubmit = (e: React.FormEvent) => {\r\n    e.preventDefault();\r\n    if (orderNumber && serviceTag) {\r\n      onSubmit(orderNumber, serviceTag); \r\n    }\r\n  };\r\n\r\n  return (\r\n    <Card className=\"w-[350px]\">\r\n      <CardHeader>\r\n        <CardTitle>Add New Card</CardTitle>\r\n        <CardDescription>Enter order details</CardDescription>\r\n      </CardHeader>\r\n      <CardContent>\r\n        <form onSubmit={handleSubmit}>\r\n          <div className=\"grid w-full items-center gap-4\">\r\n            <div className=\"flex flex-col space-y-1.5\">\r\n              <Label htmlFor=\"orderNumber\">Order Number</Label>\r\n              <Input\r\n                id=\"orderNumber\"\r\n                placeholder=\"Enter order number\"\r\n                value={orderNumber}\r\n                onChange={(e) => setOrderNumber(e.target.value)}\r\n              />\r\n            </div>\r\n            <div className=\"flex flex-col space-y-1.5\">\r\n              <Label htmlFor=\"serviceTag\">Service Tag</Label>\r\n              <Input\r\n                id=\"serviceTag\"\r\n                placeholder=\"Enter service tag\"\r\n                value={serviceTag}\r\n                onChange={(e) => setServiceTag(e.target.value)}\r\n              />\r\n            </div>\r\n          </div>\r\n        </form>\r\n      </CardContent>\r\n      <CardFooter className=\"flex justify-between\">\r\n        <Button variant=\"outline\" onClick={onCancel}>Cancel</Button>\r\n        <Button onClick={handleSubmit}>Add Card</Button>\r\n      </CardFooter>\r\n    </Card>\r\n  )\r\n}"
+        }
+    ]
+}

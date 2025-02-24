@@ -1,0 +1,214 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 49,
+            "patches": [
+                {
+                    "date": 1727009494350,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1727009578276,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,13 @@\n-import React from 'react'\r\n+import React from 'react';\r\n \r\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-8 min-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n       {children}\r\n     </div>\r\n-  )\r\n+  );\r\n }\r\n\\ No newline at end of file\n \r\n-export default Layout\n+export default Layout;\r\n"
+                },
+                {
+                    "date": 1727010233181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,5 +9,5 @@\n     </div>\r\n   );\r\n }\r\n \r\n-export default Layout;\n\\ No newline at end of file\n+export default Layout;\r\n"
+                },
+                {
+                    "date": 1727010931818,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,15 @@\n-import React from 'react';\r\n+import React from 'react'\r\n \r\n-type Props = { children: React.ReactNode }\r\n+type Props = {\r\n+  children: React.ReactNode\r\n+}\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-8 min-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n+    <div className=\"flex-1 border-l-[1px] border-t-[1px] rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n       {children}\r\n     </div>\r\n-  );\r\n+  )\r\n }\r\n \r\n-export default Layout;\r\n+export default Layout\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727011076655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,11 @@\n import React from 'react'\r\n \r\n-type Props = {\r\n-  children: React.ReactNode\r\n-}\r\n+type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"flex-1 border-l-[1px] border-t-[1px] rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727019918345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727020104938,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n import React from 'react'\r\n \r\n-type Props = { children: React.ReactNode }\r\n+type Props = {\r\n+  children: React.ReactNode\r\n+}\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] rounded-l-3xl border-muted-foreground/20 h-full\">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727020982209,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,11 @@\n import React from 'react'\r\n \r\n-type Props = {\r\n-  children: React.ReactNode\r\n-}\r\n+type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] rounded-l-3xl border-muted-foreground/20 h-full\">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727051080664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727051484299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,13 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n-      {children}\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n+      <div className=\"h-full overflow-auto\"> \r\n+        {children}\r\n+      </div>\r\n     </div>\r\n\\ No newline at end of file\n   )\r\n }\r\n \r\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727095004842,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n-      <div className=\"h-full overflow-auto\"> \r\n+      <div className=\"h-full overflow-auto p-4\"> \r\n         {children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727095410126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n-      <div className=\"h-full overflow-auto p-4\"> \r\n+      <div className=\"h-full p-4\"> \r\n         {children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727099449884,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,11 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n-      <div className=\"h-full p-4\"> \r\n-        {children}\r\n-      </div>\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+      {children}\r\n     </div>\r\n   )\r\n }\r\n\\ No newline at end of file\n \r\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727099507356,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727099666911,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727099725720,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,12 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+      <div className=\"h-full p-4\"> \r\n       {children}\r\n+      </div>\r\n     </div>\r\n   )\r\n }\r\n\\ No newline at end of file\n \r\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727100843598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-visible \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727100873785,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-visible \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n\\ No newline at end of file\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727100897275,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,5 +11,5 @@\n     </div>\r\n   )\r\n }\r\n \r\n-export default Layout\n\\ No newline at end of file\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727101063282,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727101106669,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-visible \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727101127307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-visible \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727101156115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n-      <div className=\"h-full p-4\"> \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n+      <div className=\"h-full p-4 overflow-auto\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727101193865,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n-      <div className=\"h-full p-4 overflow-auto\"> \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+      <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727101213578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       <div className=\"h-full p-4\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727101233270,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n-      <div className=\"h-full p-4\"> \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n+      <div className=\"h-full p-4 overflow-auto\"> \r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727101394932,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n-      <div className=\"h-full p-4 overflow-auto\"> \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+      \r\n       {children}\r\n-      </div>\r\n     </div>\r\n+   \r\n   )\r\n }\r\n \r\n export default Layout\r\n"
+                },
+                {
+                    "date": 1727101835640,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n-      \r\n+      <div className=\"h-full p-4 overflow-auto\"> \r\n       {children}\r\n     </div>\r\n-   \r\n+   </div>\r\n   )\r\n }\r\n \r\n export default Layout\r\n"
+                },
+                {
+                    "date": 1727101862214,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n       <div className=\"h-full p-4 overflow-auto\"> \r\n       {children}\r\n     </div>\r\n    </div>\r\n"
+                },
+                {
+                    "date": 1727101889788,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20  \">\r\n-      <div className=\"h-full p-4 overflow-auto\"> \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+      <div className=\"h-full p-4 \"> \r\n       {children}\r\n     </div>\r\n    </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727101913523,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,12 +4,12 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n-      <div className=\"h-full p-4 \"> \r\n+      \r\n       {children}\r\n     </div>\r\n-   </div>\r\n+   \r\n   )\r\n }\r\n \r\n export default Layout\r\n"
+                },
+                {
+                    "date": 1727101925218,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       \r\n       {children}\r\n     </div>\r\n    \r\n"
+                },
+                {
+                    "date": 1727103243667,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,13 +3,13 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n-      \r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+      <div className=\"h-full overflow-y-auto\"> \r\n       {children}\r\n     </div>\r\n-   \r\n+   </div>\r\n   )\r\n }\r\n \r\n export default Layout\r\n"
+                },
+                {
+                    "date": 1727103506970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,15 +1,19 @@\n import React from 'react'\r\n+import MenuOptions from '@/components/sidebar'\r\n \r\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n-      <div className=\"h-full overflow-y-auto\"> \r\n-      {children}\r\n+    <div className=\"flex h-screen overflow-hidden\">\r\n+      <MenuOptions />\r\n+      <main className=\"flex-1 overflow-y-auto\">\r\n+        <div className=\"border-l-[1px] border-t-[1px] h-full rounded-l-3xl border-muted-foreground/20 p-4\">\r\n+          {children}\r\n+        </div>\r\n+      </main>\r\n     </div>\r\n-   </div>\r\n   )\r\n }\r\n \r\n export default Layout\r\n"
+                },
+                {
+                    "date": 1727103667569,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,11 +7,11 @@\n   return (\r\n     <div className=\"flex h-screen overflow-hidden\">\r\n       <MenuOptions />\r\n       <main className=\"flex-1 overflow-y-auto\">\r\n-        <div className=\"border-l-[1px] border-t-[1px] h-full rounded-l-3xl border-muted-foreground/20 p-4\">\r\n+        \r\n           {children}\r\n-        </div>\r\n+        \r\n       </main>\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727103753929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"flex h-screen overflow-hidden\">\r\n-      <MenuOptions />\r\n+      \r\n       <main className=\"flex-1 overflow-y-auto\">\r\n         \r\n           {children}\r\n         \r\n"
+                },
+                {
+                    "date": 1727103825378,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,12 @@\n import React from 'react'\r\n-import MenuOptions from '@/components/sidebar'\r\n \r\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"flex h-screen overflow-hidden\">\r\n-      \r\n-      <main className=\"flex-1 overflow-y-auto\">\r\n-        \r\n-          {children}\r\n-        \r\n-      </main>\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+      {children}\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1727105681448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727105754776,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727105876419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727105914852,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,11 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n+      <div overflow-hidden>\r\n       {children}\r\n+      </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1727105935610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n     <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n-      <div overflow-hidden>\r\n+      <div overflow-auto>\r\n       {children}\r\n       </div>\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727105960321,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20\">\r\n-      <div overflow-auto>\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n-      </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1727185236531,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 max-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n+\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727185309622,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 max-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 min-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n \r\n       {children}\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727185333336,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 min-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n \r\n       {children}\r\n     </div>\r\n   )\r\n"
+                },
+                {
+                    "date": 1727185391419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,12 +3,11 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n-\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n \r\n-export default Layout\r\n+export default Layout\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727185427580,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727186752831,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-hidden \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727186864259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto \">\r\n       {children}\r\n     </div>\r\n   )\r\n }\r\n"
+                }
+            ],
+            "date": 1727009494350,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\ntype Props = { children: React.ReactNode }\r\n\r\nconst Layout = ({ children }: Props) => {\r\n  return (\r\n    <div className=\"border-l-[1px] border-t-[1px] pb-8 min-h-screen rounded-l-3xl border-muted-foreground/20 overflow-auto\">\r\n      {children}\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Layout"
+        }
+    ]
+}

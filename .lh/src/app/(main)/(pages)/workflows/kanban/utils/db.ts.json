@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/utils/db.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737298940441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737298940441,
+            "name": "Commit-0",
+            "content": "import { PrismaClient } from '@prisma/client';\r\n\r\nconst globalForPrisma = global as unknown as { prisma: PrismaClient };\r\n\r\nexport const prisma =\r\n    globalForPrisma.prisma || new PrismaClient({ transactionOptions: { maxWait: 5000, timeout: 20000 } });\r\n\r\nif (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;"
+        }
+    ]
+}

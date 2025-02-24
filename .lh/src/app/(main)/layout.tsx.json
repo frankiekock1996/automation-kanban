@@ -1,0 +1,62 @@
+{
+    "sourceFile": "src/app/(main)/layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 11,
+            "patches": [
+                {
+                    "date": 1727009745002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1727010380283,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,19 +5,15 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex min-h-screen\">\r\n-      {/* Fix Sidebar width to prevent horizontal overflow */}\r\n-      <Sidebar /> \r\n-      <div className=\"flex flex-col w-full\">\r\n+    <div className=\"flex overflow-hidden h-screen\">\r\n+      <Sidebar />\r\n+      <div className=\"w-full\">\r\n         <InfoBar />\r\n-        <div className=\"flex-grow overflow-auto\">\r\n-          {props.children}\r\n-        </div>\r\n+        {props.children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n-export default Layout;\r\n-\r\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727019918346,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,23 @@\n import React from 'react'\r\n import Sidebar from '@/components/sidebar'\r\n import InfoBar from '@/components/infobar'\r\n \r\n-type Props = { children: React.ReactNode }\r\n+type Props = {\r\n+  children: React.ReactNode\r\n+}\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex overflow-hidden h-screen\">\r\n+    <div className=\"flex h-screen overflow-hidden\">\r\n       <Sidebar />\r\n-      <div className=\"w-full\">\r\n+      <div className=\"flex flex-col flex-grow\">\r\n         <InfoBar />\r\n-        {props.children}\r\n+        <main className=\"flex-grow overflow-auto\">\r\n+          {props.children}\r\n+        </main>\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n-export default Layout\r\n+export default Layout\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727019936882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,23 +1,19 @@\n import React from 'react'\r\n import Sidebar from '@/components/sidebar'\r\n import InfoBar from '@/components/infobar'\r\n \r\n-type Props = {\r\n-  children: React.ReactNode\r\n-}\r\n+type Props = { children: React.ReactNode }\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex h-screen overflow-hidden\">\r\n+    <div className=\"flex overflow-hidden h-screen\">\r\n       <Sidebar />\r\n-      <div className=\"flex flex-col flex-grow\">\r\n+      <div className=\"w-full\">\r\n         <InfoBar />\r\n-        <main className=\"flex-grow overflow-auto\">\r\n-          {props.children}\r\n-        </main>\r\n+        {props.children}\r\n       </div>\r\n     </div>\r\n\\ No newline at end of file\n   )\r\n }\r\n \r\n-export default Layout\n+export default Layout\r\n"
+                },
+                {
+                    "date": 1727020104887,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,21 @@\n import React from 'react'\r\n import Sidebar from '@/components/sidebar'\r\n import InfoBar from '@/components/infobar'\r\n \r\n-type Props = { children: React.ReactNode }\r\n+type Props = {\r\n+  children: React.ReactNode\r\n+}\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex overflow-hidden h-screen\">\r\n+    <div className=\"flex h-screen overflow-hidden\">\r\n       <Sidebar />\r\n-      <div className=\"w-full\">\r\n+      <div className=\"flex flex-col flex-grow\">\r\n         <InfoBar />\r\n-        {props.children}\r\n+        <main className=\"flex-grow overflow-auto\">\r\n+          {props.children}\r\n+        </main>\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727020959002,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,17 @@\n import React from 'react'\r\n import Sidebar from '@/components/sidebar'\r\n import InfoBar from '@/components/infobar'\r\n \r\n-type Props = {\r\n-  children: React.ReactNode\r\n-}\r\n+type Props = { children: React.ReactNode }\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex h-screen overflow-hidden\">\r\n+    <div className=\"flex overflow-hidden h-screen\">\r\n       <Sidebar />\r\n-      <div className=\"flex flex-col flex-grow\">\r\n+      <div className=\"w-full\">\r\n         <InfoBar />\r\n-        <main className=\"flex-grow overflow-auto\">\r\n-          {props.children}\r\n-        </main>\r\n+        {props.children}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1727105640547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,12 @@\n import React from 'react'\r\n-import Sidebar from '@/components/sidebar'\r\n-import InfoBar from '@/components/infobar'\r\n \r\n type Props = { children: React.ReactNode }\r\n \r\n-const Layout = (props: Props) => {\r\n+const Layout = ({ children }: Props) => {\r\n   return (\r\n-    <div className=\"flex overflow-hidden h-screen\">\r\n-      <Sidebar />\r\n-      <div className=\"w-full\">\r\n-        <InfoBar />\r\n-        {props.children}\r\n-      </div>\r\n+    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n+      {children}\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1727105658773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,18 @@\n import React from 'react'\r\n+import Sidebar from '@/components/sidebar'\r\n+import InfoBar from '@/components/infobar'\r\n \r\n type Props = { children: React.ReactNode }\r\n \r\n-const Layout = ({ children }: Props) => {\r\n+const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"border-l-[1px] border-t-[1px] pb-20 h-screen rounded-l-3xl border-muted-foreground/20 overflow-scroll \">\r\n-      {children}\r\n+    <div className=\"flex overflow-hidden h-screen\">\r\n+      <Sidebar />\r\n+      <div className=\"w-full\">\r\n+        <InfoBar />\r\n+        {props.children}\r\n+      </div>\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1727186537370,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n const Layout = (props: Props) => {\r\n   return (\r\n     <div className=\"flex overflow-hidden h-screen\">\r\n       <Sidebar />\r\n-      <div className=\"w-full\">\r\n+      <div className=\"w-full overflow-auto\">\r\n         <InfoBar />\r\n         {props.children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727186581437,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex overflow-hidden h-screen\">\r\n+    <div className=\"flex h-screen\">\r\n       <Sidebar />\r\n       <div className=\"w-full overflow-auto\">\r\n         <InfoBar />\r\n         {props.children}\r\n"
+                },
+                {
+                    "date": 1727186635500,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,11 +5,11 @@\n type Props = { children: React.ReactNode }\r\n \r\n const Layout = (props: Props) => {\r\n   return (\r\n-    <div className=\"flex h-screen\">\r\n+    <div className=\"flex overflow-hidden h-screen\">\r\n       <Sidebar />\r\n-      <div className=\"w-full overflow-auto\">\r\n+      <div className=\"w-full overflow=hidden\">\r\n         <InfoBar />\r\n         {props.children}\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1727186655052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n const Layout = (props: Props) => {\r\n   return (\r\n     <div className=\"flex overflow-hidden h-screen\">\r\n       <Sidebar />\r\n-      <div className=\"w-full overflow=hidden\">\r\n+      <div className=\"w-full\">\r\n         <InfoBar />\r\n         {props.children}\r\n       </div>\r\n     </div>\r\n"
+                }
+            ],
+            "date": 1727009745002,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport Sidebar from '@/components/sidebar'\r\nimport InfoBar from '@/components/infobar'\r\n\r\ntype Props = { children: React.ReactNode }\r\n\r\nconst Layout = (props: Props) => {\r\n  return (\r\n    <div className=\"flex min-h-screen\">\r\n      {/* Fix Sidebar width to prevent horizontal overflow */}\r\n      <Sidebar /> \r\n      <div className=\"flex flex-col w-full\">\r\n        <InfoBar />\r\n        <div className=\"flex-grow overflow-auto\">\r\n          {props.children}\r\n        </div>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Layout;\r\n\r\n"
+        }
+    ]
+}

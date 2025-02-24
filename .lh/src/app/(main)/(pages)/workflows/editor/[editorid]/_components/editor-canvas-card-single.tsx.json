@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/editor/[editorid]/_components/editor-canvas-card-single.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1728217919468,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1728217919468,
+            "name": "Commit-0",
+            "content": "import { EditorCanvasCardType } from '@/lib/type'\r\nimport { useEditor } from '@/providers/editor-provider'\r\nimport React, { useMemo } from 'react'\r\nimport { Position, useNodeId } from '@xyflow/react'\r\nimport EditorCanvasIconHelper from './editor-canvas-card-icon-helper'\r\nimport CustomHandle from './custom-handle'\r\nimport { Badge } from '@/components/ui/badge'\r\n\r\nimport {\r\n  Card,\r\n  CardDescription,\r\n  CardHeader,\r\n  CardTitle,\r\n} from '@/components/ui/card'\r\nimport clsx from 'clsx'\r\n\r\ntype Props = {}\r\n\r\nconst EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {\r\n  const { dispatch, state } = useEditor()\r\n  const nodeId = useNodeId()\r\n  const logo = useMemo(() => {\r\n    return <EditorCanvasIconHelper type={data.type} />\r\n  }, [data])\r\n\r\n  return (\r\n    <>\r\n      {data.type !== 'Trigger' && data.type !== 'Google Drive' && (\r\n        <CustomHandle\r\n          type=\"target\"\r\n          position={Position.Top}\r\n          style={{ zIndex: 100 }}\r\n        />\r\n      )}\r\n      <Card\r\n        onClick={(e) => {\r\n          e.stopPropagation()\r\n          const val = state.editor.elements.find((n) => n.id === nodeId)\r\n          if (val)\r\n            dispatch({\r\n              type: 'SELECTED_ELEMENT',\r\n              payload: {\r\n                element: val,\r\n              },\r\n            })\r\n        }}\r\n        className=\"relative max-w-[400px] dark:border-muted-foreground/70\"\r\n      >\r\n        <CardHeader className=\"flex flex-row items-center gap-4\">\r\n          <div>{logo}</div>\r\n          <div>\r\n            <CardTitle className=\"text-md\">{data.title}</CardTitle>\r\n            <CardDescription>\r\n              <p className=\"text-xs text-muted-foreground/50\">\r\n                <b className=\"text-muted-foreground/80\">ID: </b>\r\n                {nodeId}\r\n              </p>\r\n              <p>{data.description}</p>\r\n            </CardDescription>\r\n          </div>\r\n        </CardHeader>\r\n        <Badge\r\n          variant=\"secondary\"\r\n          className=\"absolute right-2 top-2\"\r\n        >\r\n          {data.type}\r\n        </Badge>\r\n        <div\r\n          className={clsx('absolute left-3 top-4 h-2 w-2 rounded-full', {\r\n            'bg-green-500': Math.random() < 0.6,\r\n            'bg-orange-500': Math.random() >= 0.6 && Math.random() < 0.8,\r\n            'bg-red-500': Math.random() >= 0.8,\r\n          })}\r\n        ></div>\r\n      </Card>\r\n      <CustomHandle\r\n        type=\"source\"\r\n        position={Position.Bottom}\r\n        id=\"a\"\r\n      />\r\n    </>\r\n  )\r\n}\r\n\r\nexport default EditorCanvasCardSingle"
+        }
+    ]
+}

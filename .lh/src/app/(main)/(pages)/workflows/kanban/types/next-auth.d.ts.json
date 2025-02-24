@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/types/next-auth.d.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737213109181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737213109181,
+            "name": "Commit-0",
+            "content": "import NextAuth, { DefaultSession } from 'next-auth';\r\n\r\ndeclare module 'next-auth' {\r\n    /**\r\n     * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context\r\n     */\r\n    interface Session {\r\n        user: {\r\n            /** The user's id. */\r\n            id: string;\r\n        } & DefaultSession['user'];\r\n    }\r\n}"
+        }
+    ]
+}

@@ -12,14 +12,181 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id Int @id @default(autoincrement())
-
-  clerkId      String  @unique
-  name         String?
-  email        String  @unique
-  profileImage String?
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-
+  id               String                 @id @default(uuid())
+  clerkId          String                 @unique
+  name             String?
+  email            String                 @unique
+  profileImage     String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  boards           Board[]
+  workflows        Workflow[]
+  localGoogleId    String?                @unique
+  googleResourceId String?                @unique
+  credentials      LocalGoogleCredential?
+  discordWebhooks  DiscordWebhook[]
+  notionAccounts   Notion[]
+  slackAccounts    Slack[]
+  connections      Connection[]
 }
+
+model Board {
+  id         Int       @id @default(autoincrement())
+  uuid       String    @unique @db.Char(36)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  name       String    @db.VarChar(255)
+  clerkId     String
+  columns    Column[]  @relation("BoardColumn")
+  user       User?     @relation(fields: [clerkId], references: [clerkId])
+
+  workflow   Workflow? @relation("BoardToWorkflow")
+workflowId String?   @unique
+
+  @@index([clerkId])
+}
+
+model Column {
+  id         Int       @id @default(autoincrement())
+  uuid       String    @unique @db.Char(36)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  name       String    @db.VarChar(255)
+  board_uuid String
+  position   Int
+  color      String    @db.VarChar(255)
+  clerkId     String?
+  board      Board     @relation("BoardColumn", fields: [board_uuid], references: [uuid], onDelete: Cascade)
+  tasks      Task[]    @relation("ColumnTask")
+
+  @@index([board_uuid])
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  uuid        String    @unique @db.Char(36)
+  created_at  DateTime? @default(now()) @db.Timestamp(0)
+  updated_at  DateTime? @default(now()) @db.Timestamp(0)
+  name        String    @db.VarChar(255)
+  description String?   @db.VarChar(1023)
+  position    Int
+  column_uuid String
+  clerkId      String
+  column      Column    @relation("ColumnTask", fields: [column_uuid], references: [uuid], onDelete: Cascade)
+  subtasks    Subtask[] @relation("TaskSubtask")
+
+  @@index([column_uuid])
+}
+
+model Subtask {
+  id         Int       @id @default(autoincrement())
+  uuid       String    @unique @db.Char(36)
+  created_at DateTime? @default(now()) @db.Timestamp(0)
+  updated_at DateTime? @default(now()) @db.Timestamp(0)
+  name       String    @db.VarChar(255)
+  task_uuid  String
+  completed  Boolean   @default(false)
+  clerkId     String
+  task       Task      @relation("TaskSubtask", fields: [task_uuid], references: [uuid], onDelete: Cascade)
+
+  @@index([task_uuid])
+}
+
+model Workflow {
+  id                String   @id @default(uuid())
+  name              String
+  description       String
+  nodes             String?
+  edges             String?
+  publish           Boolean  @default(false)
+  discordTemplate   String?
+  notionTemplate    String?
+  slackTemplate     String?
+  slackChannels     String[]
+  slackAccessToken  String?
+  notionAccessToken String?
+  notionDbId        String?
+  flowPath          String?
+  cronPath          String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user   User   @relation(fields: [userId], references: [clerkId])
+  userId String
+  board   Board?  @relation("BoardToWorkflow", fields: [boardId], references: [uuid], onDelete: Cascade)
+boardId String? @unique 
+  
+}
+
+model LocalGoogleCredential {
+  id          String @id @default(uuid())
+  accessToken String @unique
+
+  folderId   String?
+  pageToken  String?
+  channelId  String  @unique @default(uuid())
+  subscribed Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [clerkId])
+}
+
+model DiscordWebhook {
+  id          String       @id @default(uuid())
+  webhookId   String       @unique
+  url         String       @unique
+  name        String
+  guildName   String
+  guildId     String
+  channelId   String       @unique
+  user        User         @relation(fields: [userId], references: [clerkId])
+  userId      String
+  connections Connection[]
+}
+
+model Slack {
+  id String @id @default(uuid())
+
+  appId            String
+  authedUserId     String
+  authedUserToken  String @unique
+  slackAccessToken String @unique
+  botUserId        String
+  teamId           String
+  teamName         String
+
+  user        User         @relation(fields: [userId], references: [clerkId])
+  userId      String
+  connections Connection[]
+}
+
+model Notion {
+  id            String       @id @default(uuid())
+  accessToken   String       @unique
+  workspaceId   String       @unique
+  databaseId    String       @unique
+  workspaceName String
+  workspaceIcon String
+  user          User         @relation(fields: [userId], references: [clerkId])
+  userId        String
+  connections   Connection[]
+}
+
+model Connection {
+  id               String          @id @default(uuid())
+  type             String
+  discordWebhook   DiscordWebhook? @relation(fields: [discordWebhookId], references: [id])
+  discordWebhookId String?         @unique
+  notion           Notion?         @relation(fields: [notionId], references: [id])
+  notionId         String?         @unique
+  user             User?           @relation(fields: [userId], references: [clerkId])
+  userId           String?
+  slack            Slack?          @relation(fields: [slackId], references: [id])
+  slackId          String?         @unique
+}
+

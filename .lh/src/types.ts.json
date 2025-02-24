@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/types.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737214325295,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737214325295,
+            "name": "Commit-0",
+            "content": "import type { Page } from '@playwright/test';\r\nimport { UniqueIdentifier } from '@dnd-kit/core';\r\n\r\n// Types for Playwright request wrappers\r\nexport type RequestOptionsWithBody = Parameters<Page['request']['post']>[1];\r\nexport type RequestOptionsNoBody = Parameters<Page['request']['get']>[1];\r\n\r\nexport type Board = {\r\n    id: number;\r\n    uuid: string;\r\n    created_at: Date;\r\n    updated_at: Date;\r\n    name: string;\r\n    user_uuid: string;\r\n    columns: Column[];\r\n};\r\n\r\nexport type MultiInput = {\r\n    value: string;\r\n    id: string;\r\n    isValid?: boolean;\r\n    isTouched?: boolean;\r\n    errorMsg?: string;\r\n};\r\n\r\nexport type Columns = Record<\r\n    UniqueIdentifier,\r\n    {\r\n        board_uuid: string;\r\n        uuid: string;\r\n        color: string;\r\n        tasks: Task[];\r\n    }\r\n>;\r\n/** Payload to create a new column */\r\nexport type NewColumn = {\r\n    board_uuid?: string;\r\n    name: string;\r\n    color: string;\r\n    position?: number;\r\n};\r\n\r\nexport type Task = {\r\n    name: string;\r\n    subtasks: Subtask[];\r\n    position: number;\r\n    description: string;\r\n    uuid: string;\r\n    column_uuid: string;\r\n};\r\n\r\nexport type NewTask = {\r\n    name: string;\r\n    description?: string;\r\n    column_uuid: string;\r\n    subtasks?: { name: string; uuid?: string; completed?: boolean }[];\r\n};\r\n\r\nexport type Subtask = {\r\n    name: string;\r\n    uuid: string;\r\n    completed: boolean;\r\n};\r\n\r\nexport type Column = {\r\n    id: number;\r\n    uuid: string;\r\n    created_at: Date;\r\n    updated_at: Date;\r\n    name: string;\r\n    position: number;\r\n    color: string;\r\n    board_uuid: string;\r\n    user_uuid: string;\r\n    tasks: Task[];\r\n};\r\n\r\nexport type MultiInputChangeEvent =\r\n    | React.ChangeEvent<HTMLInputElement>\r\n    | React.ChangeEvent<HTMLTextAreaElement>\r\n    | React.ChangeEvent<HTMLSelectElement>;\r\nexport type MultiInputFocusEvent =\r\n    | React.FocusEvent<HTMLInputElement>\r\n    | React.FocusEvent<HTMLTextAreaElement>\r\n    | React.FocusEvent<HTMLSelectElement>;\r\n"
+        }
+    ]
+}

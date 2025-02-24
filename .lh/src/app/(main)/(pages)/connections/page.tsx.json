@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1722259097054,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1726815072291,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,34 @@\n-import React from 'react'\r\n+import React from 'react';\r\n+import { CONNECTIONS } from '@/lib/constant';\r\n+import ConnectionCard from './_components/connection-card';\r\n \r\n type Props = {\r\n-    searchParams?: { [key: string]: string | undefined }\r\n-  }\r\n-  const Connections = async (props: Props) => {\r\n+  searchParams?: { [key: string]: string | undefined }\r\n+}\r\n+\r\n+const Connections = async (props: Props) => {\r\n   return (\r\n     <div className=\"relative flex flex-col gap-4\">\r\n       <h1 className=\"sticky top-0 z-[10] flex items-center justify-between border-b bg-background/50 p-6 text-4xl backdrop-blur-lg\">\r\n         Connections\r\n       </h1>\r\n       <div className=\"relative flex flex-col gap-4\"></div>\r\n       <section className=\"flex flex-col gap-4 p-6 text-muted-foreground\">\r\n-          Connect all your apps directly from here. You may need to connect\r\n\\ No newline at end of file\n-          these apps regularly to refresh verification\r\n+        Connect all your apps directly from here. You may need to connect\r\n+        these apps regularly to refresh verification.\r\n+        {CONNECTIONS.map((connection) => (\r\n+          <ConnectionCard\r\n+            key={connection.title}\r\n+            description={connection.description}\r\n+            title={connection.title}\r\n+            icon={connection.image}\r\n+            type={connection.title}\r\n+            // connected={connections} \r\n+          />\r\n+        ))}\r\n       </section>\r\n     </div>\r\n-  )\r\n-}\r\n+  );\r\n+};\r\n \r\n-export default Connections\n+export default Connections;\r\n"
+                },
+                {
+                    "date": 1726817926844,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n             description={connection.description}\r\n             title={connection.title}\r\n             icon={connection.image}\r\n             type={connection.title}\r\n-            // connected={connections} \r\n+            connected={connections} \r\n           />\r\n         ))}\r\n       </section>\r\n     </div>\r\n"
                 }
             ],
             "date": 1722259097054,

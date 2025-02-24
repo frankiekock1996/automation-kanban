@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Popover/Popover.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737294674578,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737294674578,
+            "name": "Commit-0",
+            "content": "import { FC, PropsWithChildren, SyntheticEvent } from 'react';\r\n\r\nexport const LinkContainer: FC<PropsWithChildren<{ className?: string }>> = ({ children, className }) => {\r\n    return (\r\n        <ul\r\n            data-testid=\"popover-menu\"\r\n            className={`w-48 animate-fade-in rounded-md bg-white p-4 shadow-md dark:bg-v-dark-grey ${className ?? ''}`}\r\n        >\r\n            {children}\r\n        </ul>\r\n    );\r\n};\r\n\r\nexport const PopoverLink: FC<\r\n    PropsWithChildren<{\r\n        onClick: (e: SyntheticEvent) => void;\r\n        danger?: boolean;\r\n        disabled?: boolean;\r\n        id?: string;\r\n        className?: string;\r\n    }>\r\n> = ({ danger, onClick, disabled, id, children, className }) => {\r\n    return (\r\n        <li data-testid=\"popover-item\" className={`mb-4 last:mb-0 ${className ?? ''}`}>\r\n            <button\r\n                className={`cursor-pointer  ${\r\n                    danger ? 'text-danger' : 'text-mid-grey'\r\n                } disabled:cursor-default disabled:text-opacity-50`}\r\n                onClick={onClick}\r\n                disabled={disabled}\r\n                id={id}\r\n            >\r\n                {children}\r\n            </button>\r\n        </li>\r\n    );\r\n};"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/editor/[editorid]/_components/editor-canvas-card-icon-helper.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1728217919490,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1728217919490,
+            "name": "Commit-0",
+            "content": "'use client'\r\nimport React from 'react'\r\nimport {\r\n  Calendar,\r\n  CircuitBoard,\r\n  Database,\r\n  GitBranch,\r\n  HardDrive,\r\n  Mail,\r\n  MousePointerClickIcon,\r\n  Plus,\r\n  Slack,\r\n  Timer,\r\n  Webhook,\r\n  Zap,\r\n} from 'lucide-react'\r\nimport { EditorCanvasTypes } from '@/lib/type'\r\n\r\ntype Props = { type: EditorCanvasTypes }\r\n\r\nconst EditorCanvasIconHelper = ({ type }: Props) => {\r\n  switch (type) {\r\n    case 'Email':\r\n      return (\r\n        <Mail\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Condition':\r\n      return (\r\n        <GitBranch\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'AI':\r\n      return (\r\n        <CircuitBoard\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Slack':\r\n      return (\r\n        <Slack\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Google Drive':\r\n      return (\r\n        <HardDrive\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Notion':\r\n      return (\r\n        <Database\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Custom Webhook':\r\n      return (\r\n        <Webhook\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Google Calendar':\r\n      return (\r\n        <Calendar\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Trigger':\r\n      return (\r\n        <MousePointerClickIcon\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Action':\r\n      return (\r\n        <Zap\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    case 'Wait':\r\n      return (\r\n        <Timer\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n    default:\r\n      return (\r\n        <Zap\r\n          className=\"flex-shrink-0\"\r\n          size={30}\r\n        />\r\n      )\r\n  }\r\n}\r\n\r\nexport default EditorCanvasIconHelper"
+        }
+    ]
+}

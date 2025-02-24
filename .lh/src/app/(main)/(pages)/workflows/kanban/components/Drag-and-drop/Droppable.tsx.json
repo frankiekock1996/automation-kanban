@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Drag-and-drop/Droppable.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737217980173,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737217980173,
+            "name": "Commit-0",
+            "content": "import { useDroppable } from '@dnd-kit/core';\r\nimport { FC, PropsWithChildren } from 'react';\r\nimport { UniqueIdentifier } from '@dnd-kit/core';\r\n\r\nconst Droppable: FC<PropsWithChildren<{ droppableId: UniqueIdentifier } & React.ComponentProps<'div'>>> = (props) => {\r\n    const { droppableId, ...restProps } = props;\r\n\r\n    const { setNodeRef } = useDroppable({\r\n        id: droppableId,\r\n    });\r\n\r\n    return (\r\n        <div ref={setNodeRef} {...restProps}>\r\n            {props.children}\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default Droppable;"
+        }
+    ]
+}

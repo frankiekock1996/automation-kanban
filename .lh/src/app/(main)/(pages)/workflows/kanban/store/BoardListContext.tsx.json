@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/store/BoardListContext.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737279322967,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737279322967,
+            "name": "Commit-0",
+            "content": "import { useRouter } from 'next/router';\r\nimport React, { PropsWithChildren, useEffect } from 'react';\r\nimport { Board } from '@/types';\r\nimport useSWR from 'swr';\r\nimport type { KeyedMutator } from 'swr';\r\nimport { fetcher } from '../utils/utils';\r\nimport { useSession } from 'next-auth/react';\r\n\r\nexport type BoardListContextProps = {\r\n    boards?: Board[];\r\n    selectedBoard: Board | null;\r\n    selectedTask: string | null;\r\n    setSelectedTask: React.Dispatch<React.SetStateAction<string | null>>;\r\n    mutateBoards: KeyedMutator<Board[]>;\r\n    isLoading: boolean;\r\n    isValidating: boolean;\r\n    error: any;\r\n};\r\n\r\nexport const BoardListContext = React.createContext<BoardListContextProps>({\r\n    boards: [],\r\n    selectedBoard: null,\r\n    selectedTask: null,\r\n    setSelectedTask: () => null,\r\n    isLoading: false,\r\n    isValidating: false,\r\n    error: null,\r\n    mutateBoards: () => Promise.resolve([]),\r\n});\r\n\r\nconst BoardListContextProvider: React.FC<PropsWithChildren<{ value?: BoardListContextProps }>> = (props) => {\r\n    const session = useSession();\r\n    if (!session || session.status === 'unauthenticated') {\r\n        return <>{props.children}</>;\r\n    }\r\n\r\n    const router = useRouter();\r\n\r\n    const [selectedBoard, setSelectedBoard] = React.useState<Board | null>(null);\r\n    const [selectedTask, setSelectedTask] = React.useState<string | null>(null);\r\n    const {\r\n        data: boards,\r\n        mutate: mutateBoards,\r\n        isLoading,\r\n        isValidating,\r\n        error,\r\n    } = useSWR<Board[]>(`/api/boards`, fetcher);\r\n\r\n    useEffect(() => {\r\n        setSelectedBoard(boards?.find((board) => board.uuid === router.query.boardId) ?? null);\r\n    }, [boards, router.query.boardId]);\r\n\r\n    const contextValue = {\r\n        boards,\r\n        selectedBoard,\r\n        selectedTask,\r\n        setSelectedTask,\r\n        isLoading,\r\n        isValidating,\r\n        error,\r\n        mutateBoards,\r\n    };\r\n\r\n    return <BoardListContext.Provider value={props.value ?? contextValue}>{props.children}</BoardListContext.Provider>;\r\n};\r\n\r\nexport function useBoardsContext() {\r\n    const context = React.useContext(BoardListContext);\r\n\r\n    if (!context) {\r\n        throw new Error('You need to wrap Provider.');\r\n    }\r\n\r\n    return context;\r\n}\r\n\r\nexport default BoardListContextProvider;"
+        }
+    ]
+}

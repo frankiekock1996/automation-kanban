@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/[kanbanid]/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1728661256034,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1728661668690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,16 @@\n-'use client'\r\n+'use client'; \r\n+\r\n import { CustomKanban } from '@/app/(main)/(pages)/workflows/_components/custom-kanban';\r\n-import { useRouter } from 'next/router';\r\n+import { useParams } from 'next/navigation'; \r\n \r\n const KanbanPage = () => {\r\n-  const router = useRouter();\r\n-  const { id } = router.query; \r\n+  const { kanbanid } = useParams(); \r\n \r\n   return (\r\n     <div className=\"h-screen w-full bg-neutral-900 text-neutral-50\">\r\n       <div className=\"p-4\">\r\n-        <h1 className=\"text-3xl font-bold\">Kanban Board for Workflow {id}</h1>\r\n+        <h1 className=\"text-3xl font-bold\">Kanban Board for Workflow {kanbanid}</h1>\r\n       </div>\r\n       <CustomKanban />\r\n     </div>\r\n   );\r\n"
+                },
+                {
+                    "date": 1728662172753,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n \r\n   return (\r\n     <div className=\"h-screen w-full bg-neutral-900 text-neutral-50\">\r\n       <div className=\"p-4\">\r\n-        <h1 className=\"text-3xl font-bold\">Kanban Board for Workflow {kanbanid}</h1>\r\n+        <h1 className=\"text-3xl font-bold\">Kanban Board# {kanbanid}</h1>\r\n       </div>\r\n       <CustomKanban />\r\n     </div>\r\n   );\r\n"
+                }
+            ],
+            "date": 1728661256034,
+            "name": "Commit-0",
+            "content": "'use client'\r\nimport { CustomKanban } from '@/app/(main)/(pages)/workflows/_components/custom-kanban';\r\nimport { useRouter } from 'next/router';\r\n\r\nconst KanbanPage = () => {\r\n  const router = useRouter();\r\n  const { id } = router.query; \r\n\r\n  return (\r\n    <div className=\"h-screen w-full bg-neutral-900 text-neutral-50\">\r\n      <div className=\"p-4\">\r\n        <h1 className=\"text-3xl font-bold\">Kanban Board for Workflow {id}</h1>\r\n      </div>\r\n      <CustomKanban />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default KanbanPage;\r\n"
+        }
+    ]
+}

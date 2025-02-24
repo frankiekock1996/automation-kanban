@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/pages/login/_app.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1737805399287,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737806634192,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,17 +1,17 @@\n import '../styles/globals.css';\r\n import type { AppProps } from 'next/app';\r\n-import { SessionProvider } from 'next-auth/react';\r\n+import { ClerkProvider } from '@clerk/nextjs';\r\n import ThemeContextProvider from '../../store/ThemeContext';\r\n import BoardListContextProvider from '../../store/BoardListContext';\r\n \r\n-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {\r\n+export default function App({ Component, pageProps }: AppProps) {\r\n     return (\r\n-        <SessionProvider session={session}>\r\n+        <ClerkProvider>\r\n             <ThemeContextProvider>\r\n                 <BoardListContextProvider>\r\n                     <Component {...pageProps} />\r\n                 </BoardListContextProvider>\r\n             </ThemeContextProvider>\r\n\\ No newline at end of file\n-        </SessionProvider>\r\n+        </ClerkProvider>\r\n     );\r\n-}\n+}\r\n"
+                }
+            ],
+            "date": 1737805399287,
+            "name": "Commit-0",
+            "content": "import '../styles/globals.css';\r\nimport type { AppProps } from 'next/app';\r\nimport { SessionProvider } from 'next-auth/react';\r\nimport ThemeContextProvider from '../../store/ThemeContext';\r\nimport BoardListContextProvider from '../../store/BoardListContext';\r\n\r\nexport default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {\r\n    return (\r\n        <SessionProvider session={session}>\r\n            <ThemeContextProvider>\r\n                <BoardListContextProvider>\r\n                    <Component {...pageProps} />\r\n                </BoardListContextProvider>\r\n            </ThemeContextProvider>\r\n        </SessionProvider>\r\n    );\r\n}"
+        }
+    ]
+}

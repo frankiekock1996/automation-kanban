@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/editor/[editorid]/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1728216815775,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1728216815775,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport EditorProvider from '@/providers/editor-provider'\r\nimport { ConnectionsProvider } from '@/providers/connections-provider'\r\nimport EditorCanvas from './_components/editor-canvas'\r\n\r\ntype Props = {}\r\n\r\nconst Page = (props: Props) => {\r\n  return (\r\n    <div className=\"h-full\">\r\n      <EditorProvider> \r\n        <ConnectionsProvider>\r\n          <EditorCanvas />\r\n        </ConnectionsProvider>\r\n      </EditorProvider>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default Page\r\n"
+        }
+    ]
+}

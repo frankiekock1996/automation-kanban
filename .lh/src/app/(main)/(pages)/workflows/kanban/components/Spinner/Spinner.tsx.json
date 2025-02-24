@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Spinner/Spinner.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737295358309,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737295358309,
+            "name": "Commit-0",
+            "content": "const Spinner = () => {\r\n    return (\r\n        <div className=\"aspect-square w-24 animate-spin rounded-full border-8 border-primary-light border-r-transparent dark:border-primary dark:border-r-transparent\" />\r\n    );\r\n};\r\n\r\nexport default Spinner;"
+        }
+    ]
+}

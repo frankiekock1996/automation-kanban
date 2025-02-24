@@ -1,0 +1,70 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/_components/workflow-button.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 13,
+            "patches": [
+                {
+                    "date": 1727008818003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1727590726895,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,8 +4,10 @@\n import { Button } from '@/components/ui/button'\r\n import { useModal } from '@/providers/modal-provider'\r\n import CustomModal from '@/components/global/custom-modal'\r\n import Workflowform from '@/components/forms/workflow-form'\r\n+import DateTimePickerForm\r\n+ from '@/components/forms/date-time-picker-form'\r\n type Props = {}\r\n \r\n const WorkflowButton = (props: Props) => {\r\n   const { setOpen, setClose } = useModal()\r\n@@ -16,9 +18,9 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <Workflowform />\r\n+        <DateTimePickerForm />\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727590859664,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,11 +3,11 @@\n import { Plus} from 'lucide-react'\r\n import { Button } from '@/components/ui/button'\r\n import { useModal } from '@/providers/modal-provider'\r\n import CustomModal from '@/components/global/custom-modal'\r\n-import Workflowform from '@/components/forms/workflow-form'\r\n-import DateTimePickerForm\r\n- from '@/components/forms/date-time-picker-form'\r\n+import WorkflowForm from '@/components/forms/workflow-form'\r\n+// import DateTimePickerForm\r\n+//  from '@/components/forms/date-time-picker-form'\r\n type Props = {}\r\n \r\n const WorkflowButton = (props: Props) => {\r\n   const { setOpen, setClose } = useModal()\r\n@@ -18,9 +18,9 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <DateTimePickerForm />\r\n+        <WorkflowForm />\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727591044352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,10 +4,10 @@\n import { Button } from '@/components/ui/button'\r\n import { useModal } from '@/providers/modal-provider'\r\n import CustomModal from '@/components/global/custom-modal'\r\n import WorkflowForm from '@/components/forms/workflow-form'\r\n-// import DateTimePickerForm\r\n-//  from '@/components/forms/date-time-picker-form'\r\n+import DateTimePickerForm\r\n+ from '@/components/forms/date-time-picker-form'\r\n type Props = {}\r\n \r\n const WorkflowButton = (props: Props) => {\r\n   const { setOpen, setClose } = useModal()\r\n@@ -18,9 +18,9 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <WorkflowForm />\r\n+        <DateTimePickerForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727593096415,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <DateTimePickerForm/>\r\n+        <WorkflowForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727593135406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <WorkflowForm/>\r\n+        <DateTimePickerForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727596491592,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,10 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <DateTimePickerForm/>\r\n+        {/* <DateTimePickerForm/> */}\r\n+        <WorkflowForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727597866012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,34 @@\n+'use client'\r\n+import React from 'react'\r\n+import { Plus} from 'lucide-react'\r\n+import { Button } from '@/components/ui/button'\r\n+import { useModal } from '@/providers/modal-provider'\r\n+import CustomModal from '@/components/global/custom-modal'\r\n+import Workflowform from '@/components/forms/workflow-form'\r\n+type Props = {}\r\n+\r\n+const WorkflowButton = (props: Props) => {\r\n+  const { setOpen, setClose } = useModal()\r\n+\r\n+\r\n+  const handleClick = () => {\r\n+    setOpen(\r\n+      <CustomModal\r\n+        title=\"Create a Workflow Automation\"\r\n+        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n+      >\r\n+        <Workflowform />\r\n+      </CustomModal>\r\n+    )\r\n+  }\r\n+\r\n+  return (\r\n+    <Button \r\n+      size={'icon'} \r\n+      onClick={handleClick}>\r\n+      <Plus />\r\n+    </Button>\r\n+  )\r\n+}\r\n+\r\n+export default WorkflowButton\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727608068949,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import { Plus} from 'lucide-react'\r\n import { Button } from '@/components/ui/button'\r\n import { useModal } from '@/providers/modal-provider'\r\n import CustomModal from '@/components/global/custom-modal'\r\n+import DateTimePickerForm from '@/components/forms/date-time-picker-form'\r\n import Workflowform from '@/components/forms/workflow-form'\r\n type Props = {}\r\n \r\n const WorkflowButton = (props: Props) => {\r\n@@ -16,9 +17,10 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <Workflowform />\r\n+        {/* <Workflowform /> */}\r\n+       < DateTimePickerForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n@@ -30,42 +32,5 @@\n     </Button>\r\n   )\r\n }\r\n \r\n-export default WorkflowButton\n-'use client'\r\n-import React from 'react'\r\n-import { Plus} from 'lucide-react'\r\n-import { Button } from '@/components/ui/button'\r\n-import { useModal } from '@/providers/modal-provider'\r\n-import CustomModal from '@/components/global/custom-modal'\r\n-import WorkflowForm from '@/components/forms/workflow-form'\r\n-import DateTimePickerForm\r\n- from '@/components/forms/date-time-picker-form'\r\n-type Props = {}\r\n-\r\n-const WorkflowButton = (props: Props) => {\r\n-  const { setOpen, setClose } = useModal()\r\n-\r\n-\r\n-  const handleClick = () => {\r\n-    setOpen(\r\n-      <CustomModal\r\n-        title=\"Create a Workflow Automation\"\r\n-        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n-      >\r\n-        {/* <DateTimePickerForm/> */}\r\n-        <WorkflowForm/>\r\n-      </CustomModal>\r\n-    )\r\n-  }\r\n-\r\n-  return (\r\n-    <Button \r\n-      size={'icon'} \r\n-      onClick={handleClick}>\r\n-      <Plus />\r\n-    </Button>\r\n-  )\r\n-}\r\n-\r\n export default WorkflowButton\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727625254374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,10 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        {/* <Workflowform /> */}\r\n-       < DateTimePickerForm/>\r\n+        <Workflowform />\r\n+       {/* < DateTimePickerForm/> */}\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727625648762,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,10 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        <Workflowform />\r\n-       {/* < DateTimePickerForm/> */}\r\n+        {/* <Workflowform /> */}\r\n+       < DateTimePickerForm/>\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727625679765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,10 +17,10 @@\n       <CustomModal\r\n         title=\"Create a Workflow Automation\"\r\n         subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n       >\r\n-        {/* <Workflowform /> */}\r\n-       < DateTimePickerForm/>\r\n+        <Workflowform />\r\n+       {/* < DateTimePickerForm/> */}\r\n       </CustomModal>\r\n     )\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1727626769259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,36 @@\n+'use client'\r\n+import React from 'react'\r\n+import { Plus} from 'lucide-react'\r\n+import { Button } from '@/components/ui/button'\r\n+import { useModal } from '@/providers/modal-provider'\r\n+import CustomModal from '@/components/global/custom-modal'\r\n+import DateTimePickerForm from '@/components/forms/date-time-picker-form'\r\n+import Workflowform from '@/components/forms/workflow-form'\r\n+type Props = {}\r\n+\r\n+const WorkflowButton = (props: Props) => {\r\n+  const { setOpen, setClose } = useModal()\r\n+\r\n+\r\n+  const handleClick = () => {\r\n+    setOpen(\r\n+      <CustomModal\r\n+        title=\"Create a Workflow Automation\"\r\n+        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n+      >\r\n+        {/* <Workflowform /> */}\r\n+       < DateTimePickerForm/>\r\n+      </CustomModal>\r\n+    )\r\n+  }\r\n+\r\n+  return (\r\n+    <Button \r\n+      size={'icon'} \r\n+      onClick={handleClick}>\r\n+      <Plus />\r\n+    </Button>\r\n+  )\r\n+}\r\n+\r\n+export default WorkflowButton\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727627342462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,36 @@\n+'use client'\r\n+import React from 'react'\r\n+import { Plus} from 'lucide-react'\r\n+import { Button } from '@/components/ui/button'\r\n+import { useModal } from '@/providers/modal-provider'\r\n+import CustomModal from '@/components/global/custom-modal'\r\n+import DateTimePickerForm from '@/components/forms/date-time-picker-form'\r\n+import Workflowform from '@/components/forms/workflow-form'\r\n+type Props = {}\r\n+\r\n+const WorkflowButton = (props: Props) => {\r\n+  const { setOpen, setClose } = useModal()\r\n+\r\n+\r\n+  const handleClick = () => {\r\n+    setOpen(\r\n+      <CustomModal\r\n+        title=\"Create a Workflow Automation\"\r\n+        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n+      >\r\n+        <Workflowform />\r\n+       {/* < DateTimePickerForm/> */}\r\n+      </CustomModal>\r\n+    )\r\n+  }\r\n+\r\n+  return (\r\n+    <Button \r\n+      size={'icon'} \r\n+      onClick={handleClick}>\r\n+      <Plus />\r\n+    </Button>\r\n+  )\r\n+}\r\n+\r\n+export default WorkflowButton\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1727008818003,
+            "name": "Commit-0",
+            "content": "'use client'\r\nimport React from 'react'\r\nimport { Plus} from 'lucide-react'\r\nimport { Button } from '@/components/ui/button'\r\nimport { useModal } from '@/providers/modal-provider'\r\nimport CustomModal from '@/components/global/custom-modal'\r\nimport Workflowform from '@/components/forms/workflow-form'\r\ntype Props = {}\r\n\r\nconst WorkflowButton = (props: Props) => {\r\n  const { setOpen, setClose } = useModal()\r\n\r\n\r\n  const handleClick = () => {\r\n    setOpen(\r\n      <CustomModal\r\n        title=\"Create a Workflow Automation\"\r\n        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n      >\r\n        <Workflowform />\r\n      </CustomModal>\r\n    )\r\n  }\r\n\r\n  return (\r\n    <Button \r\n      size={'icon'} \r\n      onClick={handleClick}>\r\n      <Plus />\r\n    </Button>\r\n  )\r\n}\r\n\r\nexport default WorkflowButton"
+        }
+    ]
+}

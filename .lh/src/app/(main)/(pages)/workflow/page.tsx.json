@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflow/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1726975813598,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1727005645953,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     return (\r\n       <div className=\"flex flex-col relative\">\r\n         <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n           Workflows\r\n-          <WorkflowButton />\r\n+          {/* <WorkflowButton /> */}\r\n         </h1>\r\n       </div>\r\n     )\r\n   }\r\n"
+                },
+                {
+                    "date": 1727005979678,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     return (\r\n       <div className=\"flex flex-col relative\">\r\n         <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n           Workflows\r\n-          {/* <WorkflowButton /> */}\r\n+          <WorkflowButton />\r\n         </h1>\r\n       </div>\r\n     )\r\n   }\r\n"
+                },
+                {
+                    "date": 1727006632626,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,19 @@\n import React from 'react'\r\n-import WorkflowButton from './_components/workflow-button'\r\n+// import WorkflowButton from './_components/workflow-button'\r\n+// import Workflows from './_components'\r\n \r\n type Props = {}\r\n \r\n const Page = (props: Props) => {\r\n-    return (\r\n-      <div className=\"flex flex-col relative\">\r\n-        <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n-          Workflows\r\n-          <WorkflowButton />\r\n-        </h1>\r\n-      </div>\r\n-    )\r\n-  }\r\n-  \r\n-  export default Page\r\n+  return (\r\n+    <div className=\"flex flex-col relative\">\r\n+      <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n+        Workflows\r\n+        {/* <WorkflowButton /> */}\r\n+      </h1>\r\n+      {/* <Workflows /> */}\r\n+    </div>\r\n+  )\r\n+}\r\n \r\n+export default Page\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1727007209604,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,16 @@\n import React from 'react'\r\n-// import WorkflowButton from './_components/workflow-button'\r\n-// import Workflows from './_components'\r\n \r\n type Props = {}\r\n \r\n const Page = (props: Props) => {\r\n-  return (\r\n-    <div className=\"flex flex-col relative\">\r\n-      <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n-        Workflows\r\n-        {/* <WorkflowButton /> */}\r\n-      </h1>\r\n-      {/* <Workflows /> */}\r\n-    </div>\r\n-  )\r\n-}\r\n+    return (\r\n+      <div className=\"flex flex-col relative\">\r\n\\ No newline at end of file\n+        <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n+          Workflows\r\n \r\n-export default Page\n+        </h1>\r\n+      </div>\r\n+    )\r\n+  }\r\n+  \r\n+  export default Page\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1726975813598,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport WorkflowButton from './_components/workflow-button'\r\n\r\ntype Props = {}\r\n\r\nconst Page = (props: Props) => {\r\n    return (\r\n      <div className=\"flex flex-col relative\">\r\n        <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b justify-between\">\r\n          Workflows\r\n          <WorkflowButton />\r\n        </h1>\r\n      </div>\r\n    )\r\n  }\r\n  \r\n  export default Page\r\n\r\n"
+        }
+    ]
+}

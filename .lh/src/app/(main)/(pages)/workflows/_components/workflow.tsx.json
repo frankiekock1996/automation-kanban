@@ -1,0 +1,50 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/_components/workflow.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1727962267189,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1728661016894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-        <Link href={`/workflows/editor/${id}`}>\r\n+        <Link href={`/workflows/kanban/${id}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1740151178371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,10 +30,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-        <Link href={`/workflows/kanban/${id}`}>\r\n-        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n+        {/* <Link href={`/workflows/kanban/${id}`}> */}\r\n+        <Link href={`/workflows/editor/${id}`}>\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1740151283858,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,10 +30,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-        {/* <Link href={`/workflows/kanban/${id}`}> */}\r\n-        <Link href={`/workflows/editor/${id}`}>\r\n+        <Link href={`/workflows/kanban/${id}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1740190407880,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n         <Link href={`/workflows/kanban/${id}`}>\r\n-        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n+        {/* <Link href={`/workflows/editor/${i\\boardId}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1740190871912,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,12 +15,13 @@\n type Props = {\r\n   name: string\r\n   description: string\r\n   id: string\r\n+  boardId:string\r\n   publish: boolean | null\r\n }\r\n \r\n-const Workflow = ({ description, id, name, publish }: Props) => {\r\n+const Workflow = ({ description, id, name, publish,boardId }: Props) => {\r\n //   const onPublishFlow = async (event: any) => {\r\n //     const response = await onFlowPublish(\r\n //       id,\r\n //       event.target.ariaChecked === 'false'\r\n@@ -30,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-        <Link href={`/workflows/kanban/${id}`}>\r\n-        {/* <Link href={`/workflows/editor/${i\\boardId}`}> */}\r\n+      <Link href={`/workflows/kanban/${boardId}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1740224664772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${boardId}`}>\r\n+      <Link href={`/workflows/kanban/${id}`}>\r\n         {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n"
+                },
+                {
+                    "date": 1740224698257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${id}`}>\r\n+      <Link href={`/workflows/kanban/${boardId}`}>\r\n         {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n"
+                },
+                {
+                    "date": 1740224846066,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${boardId}`}>\r\n+      <Link href={`/workflows/kanban/${id}`}>\r\n+\r\n         {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n"
+                }
+            ],
+            "date": 1727962267189,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport {\r\n  Card,\r\n  CardDescription,\r\n  CardHeader,\r\n  CardTitle,\r\n} from '@/components/ui/card'\r\nimport Link from 'next/link'\r\nimport Image from 'next/image'\r\nimport { Label } from '@/components/ui/label'\r\nimport { Switch } from '@/components/ui/switch'\r\n// import { toast } from 'sonner'\r\n// import { onFlowPublish } from '../_actions/workflow-connections'\r\n\r\ntype Props = {\r\n  name: string\r\n  description: string\r\n  id: string\r\n  publish: boolean | null\r\n}\r\n\r\nconst Workflow = ({ description, id, name, publish }: Props) => {\r\n//   const onPublishFlow = async (event: any) => {\r\n//     const response = await onFlowPublish(\r\n//       id,\r\n//       event.target.ariaChecked === 'false'\r\n//     )\r\n//     if (response) toast.message(response)\r\n//   }\r\n\r\n  return (\r\n    <Card className=\"flex w-full items-center justify-between\">\r\n      <CardHeader className=\"flex flex-col gap-4\">\r\n        <Link href={`/workflows/editor/${id}`}>\r\n          <div className=\"flex flex-row gap-2\">\r\n            <Image\r\n              src=\"/googleDrive.png\"\r\n              alt=\"Google Drive\"\r\n              height={30}\r\n              width={30}\r\n              className=\"object-contain\"\r\n            />\r\n            <Image\r\n              src=\"/notion.png\"\r\n              alt=\"Google Drive\"\r\n              height={30}\r\n              width={30}\r\n              className=\"object-contain\"\r\n            />\r\n            <Image\r\n              src=\"/discord.png\"\r\n              alt=\"Google Drive\"\r\n              height={30}\r\n              width={30}\r\n              className=\"object-contain\"\r\n            />\r\n          </div>\r\n          <div className=\"\">\r\n            <CardTitle className=\"text-lg\">{name}</CardTitle>\r\n            <CardDescription>{description}</CardDescription>\r\n          </div>\r\n        </Link>\r\n      </CardHeader>\r\n      <div className=\"flex flex-col items-center gap-2 p-4\">\r\n        <Label\r\n          htmlFor=\"airplane-mode\"\r\n          className=\"text-muted-foreground\"\r\n        >\r\n          {publish! ? 'On' : 'Off'}\r\n        </Label>\r\n        <Switch\r\n          id=\"airplane-mode\"\r\n          // onClick={onPublishFlow}\r\n          // defaultChecked={publish!}\r\n        />\r\n      </div>\r\n    </Card>\r\n  )\r\n}\r\n\r\nexport default Workflow"
+        }
+    ]
+}

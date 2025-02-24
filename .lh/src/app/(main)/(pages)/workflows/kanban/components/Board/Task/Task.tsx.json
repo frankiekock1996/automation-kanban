@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Board/Task/Task.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737279768367,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737279768367,
+            "name": "Commit-0",
+            "content": "import { FC } from 'react';\r\nimport { useSortable } from '@dnd-kit/sortable';\r\nimport type { Task as TaskType } from '@/types';\r\nimport { useBoardsContext } from '../../../store/BoardListContext';\r\n\r\nconst Task: FC<{ taskData: TaskType }> = ({ taskData }) => {\r\n    const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: taskData.uuid });\r\n    const { setSelectedTask } = useBoardsContext();\r\n    const style = transform\r\n        ? {\r\n              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,\r\n              transition,\r\n          }\r\n        : undefined;\r\n\r\n    const completedTasks = taskData.subtasks.filter((subtask) => subtask.completed).length;\r\n\r\n    const handleTaskClick = () => {\r\n        setSelectedTask(taskData.uuid);\r\n    };\r\n\r\n    return (\r\n        <>\r\n            <li\r\n                ref={setNodeRef}\r\n                style={style}\r\n                {...attributes}\r\n                {...listeners}\r\n                onClick={handleTaskClick}\r\n                onKeyDown={(e) => {\r\n                    if (e.key === 'Enter') {\r\n                        handleTaskClick();\r\n                    }\r\n                }}\r\n                data-testid=\"task\"\r\n                className=\"group mb-5 cursor-pointer rounded-md bg-white px-4 py-6 text-left font-bold shadow-md dark:bg-dark-grey\"\r\n            >\r\n                <h4 className=\"text-sm text-black group-hover:text-primary dark:text-white\">{taskData.name}</h4>\r\n                {taskData.subtasks.length > 0 && (\r\n                    <span className=\"mt-2 text-xs text-mid-grey\">{`${completedTasks} of ${taskData.subtasks.length} subtasks done`}</span>\r\n                )}\r\n            </li>\r\n        </>\r\n    );\r\n};\r\n\r\nexport default Task;"
+        }
+    ]
+}

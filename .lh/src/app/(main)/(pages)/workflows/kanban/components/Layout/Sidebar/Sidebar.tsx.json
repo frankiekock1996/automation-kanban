@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Layout/Sidebar/Sidebar.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737293757401,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737293757401,
+            "name": "Commit-0",
+            "content": "import { FC, MouseEventHandler } from 'react';\r\nimport BoardList from '../../BoardList/BoardList';\r\nimport ThemeToggle from '../../BoardList/ThemeToggle';\r\nimport { HideSidebarIcon } from '../../Icons/Icons';\r\n\r\nconst HideSideBarButton: FC<React.ComponentProps<'button'>> = (props) => {\r\n    const { className, ...restProps } = props;\r\n    return (\r\n        <button\r\n            id=\"hide-sidebar-btn\"\r\n            className={`group mr-5 flex items-center rounded-r-full font-bold text-mid-grey transition-all hover:bg-grey-highlight hover:text-primary dark:hover:bg-white ${\r\n                className ?? ''\r\n            }`}\r\n            {...restProps}\r\n        >\r\n            <HideSidebarIcon className=\"mr-2.5 fill-mid-grey group-hover:fill-primary\" />\r\n            <span>Hide sidebar</span>\r\n        </button>\r\n    );\r\n};\r\n\r\nconst Sidebar: FC<{\r\n    onHideSidebar: MouseEventHandler;\r\n    isHidden: boolean;\r\n}> = (props) => {\r\n    return (\r\n        <>\r\n            {props.isHidden || (\r\n                <div\r\n                    id=\"sidebar\"\r\n                    className=\"hidden h-full flex-col bg-white py-8 dark:bg-dark-grey sm:flex sm:w-64 lg:w-72\"\r\n                >\r\n                    <BoardList />\r\n                    <ThemeToggle />\r\n                    <HideSideBarButton className=\"my-3.5 py-3.5 pl-3 lg:pl-6\" onClick={props.onHideSidebar} />\r\n                </div>\r\n            )}{' '}\r\n        </>\r\n    );\r\n};\r\n\r\nexport default Sidebar;"
+        }
+    ]
+}

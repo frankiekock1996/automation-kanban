@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Layout/Layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1737294011647,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740146043615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+'use client'\r\n import { FC, MouseEventHandler, PropsWithChildren, useState, useContext } from 'react';\r\n import { ShowSidebarIcon } from '../Icons/Icons';\r\n import Logo from './Header/Logo';\r\n import Sidebar from './Sidebar/Sidebar';\r\n"
+                }
+            ],
+            "date": 1737294011647,
+            "name": "Commit-0",
+            "content": "import { FC, MouseEventHandler, PropsWithChildren, useState, useContext } from 'react';\r\nimport { ShowSidebarIcon } from '../Icons/Icons';\r\nimport Logo from './Header/Logo';\r\nimport Sidebar from './Sidebar/Sidebar';\r\nimport { ThemeContext } from '../../store/ThemeContext';\r\nimport Header from './Header/Header';\r\n\r\nconst ShowSidebarButton: FC<{ onShowSidebar: MouseEventHandler }> = ({ onShowSidebar }) => {\r\n    return (\r\n        <button\r\n            id=\"show-sidebar-btn\"\r\n            onClick={onShowSidebar}\r\n            className={`fixed bottom-8 z-10 hidden h-12 w-14 items-center justify-center rounded-r-full bg-primary transition-colors hover:bg-primary-light sm:flex`}\r\n        >\r\n            <ShowSidebarIcon />\r\n        </button>\r\n    );\r\n};\r\n\r\nconst Layout: FC<PropsWithChildren> = ({ children }) => {\r\n    const [sidebarHidden, setSidebarHidden] = useState(false);\r\n\r\n    const { darkModeEnabled } = useContext(ThemeContext);\r\n\r\n    const hideSidebarHandler = () => {\r\n        setSidebarHidden(true);\r\n    };\r\n\r\n    const showSidebarHandler = () => {\r\n        setSidebarHidden(false);\r\n    };\r\n\r\n    return (\r\n        <div\r\n            className={`app-container relative grid h-screen grid-cols-[max-content_1fr] grid-rows-[max-content_1fr] ${\r\n                darkModeEnabled ? 'dark' : ''\r\n            }`}\r\n        >\r\n            <Logo />\r\n            <Header />\r\n            <Sidebar onHideSidebar={hideSidebarHandler} isHidden={sidebarHidden} />\r\n            <section\r\n                className={`relative col-start-1 col-end-3 overflow-scroll border-t border-lines-light bg-light-grey dark:border-lines-dark dark:bg-v-dark-grey  ${\r\n                    sidebarHidden ? '' : 'sm:col-start-2 sm:border-l'\r\n                }`}\r\n            >\r\n                <div id=\"mobile-menu-root\" />\r\n                {sidebarHidden && <ShowSidebarButton onShowSidebar={showSidebarHandler} />} {children}\r\n            </section>\r\n            <div id=\"modal-root\" className=\"absolute\" />\r\n            <div id=\"popover-root\" className=\"absolute\" />\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default Layout;"
+        }
+    ]
+}

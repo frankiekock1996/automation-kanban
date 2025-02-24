@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/providers/connections-provider.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1726815072277,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1728216815837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,5 +42,83 @@\n     }>\r\n   >\r\n   isLoading: boolean\r\n   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>\r\n+}\r\n+\r\n+type ConnectionWithChildProps = {\r\n+  children: React.ReactNode\r\n+}\r\n+\r\n+const InitialValues: ConnectionProviderProps = {\r\n+  discordNode: {\r\n+    webhookURL: '',\r\n+    content: '',\r\n+    webhookName: '',\r\n+    guildName: '',\r\n+  },\r\n+  googleNode: [],\r\n+  notionNode: {\r\n+    accessToken: '',\r\n+    databaseId: '',\r\n+    workspaceName: '',\r\n+    content: '',\r\n+  },\r\n+  workflowTemplate: {\r\n+    discord: '',\r\n+    notion: '',\r\n+    slack: '',\r\n+  },\r\n+  slackNode: {\r\n+    appId: '',\r\n+    authedUserId: '',\r\n+    authedUserToken: '',\r\n+    slackAccessToken: '',\r\n+    botUserId: '',\r\n+    teamId: '',\r\n+    teamName: '',\r\n+    content: '',\r\n+  },\r\n+  isLoading: false,\r\n+  setGoogleNode: () => undefined,\r\n+  setDiscordNode: () => undefined,\r\n+  setNotionNode: () => undefined,\r\n+  setSlackNode: () => undefined,\r\n+  setIsLoading: () => undefined,\r\n+  setWorkFlowTemplate: () => undefined,\r\n+}\r\n+\r\n+const ConnectionsContext = createContext(InitialValues)\r\n+const { Provider } = ConnectionsContext\r\n+\r\n+export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {\r\n+  const [discordNode, setDiscordNode] = useState(InitialValues.discordNode)\r\n+  const [googleNode, setGoogleNode] = useState(InitialValues.googleNode)\r\n+  const [notionNode, setNotionNode] = useState(InitialValues.notionNode)\r\n+  const [slackNode, setSlackNode] = useState(InitialValues.slackNode)\r\n+  const [isLoading, setIsLoading] = useState(InitialValues.isLoading)\r\n+  const [workflowTemplate, setWorkFlowTemplate] = useState(\r\n+    InitialValues.workflowTemplate\r\n+  )\r\n+\r\n+  const values = {\r\n+    discordNode,\r\n+    setDiscordNode,\r\n+    googleNode,\r\n+    setGoogleNode,\r\n+    notionNode,\r\n+    setNotionNode,\r\n+    slackNode,\r\n+    setSlackNode,\r\n+    isLoading,\r\n+    setIsLoading,\r\n+    workflowTemplate,\r\n+    setWorkFlowTemplate,\r\n+  }\r\n+\r\n+  return <Provider value={values}>{children}</Provider>\r\n+}\r\n+\r\n+export const useNodeConnections = () => {\r\n+  const nodeConnection = useContext(ConnectionsContext)\r\n+  return { nodeConnection }\r\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1726815072277,
+            "name": "Commit-0",
+            "content": "'use client'\r\nimport { createContext, useContext, useState } from 'react'\r\n\r\nexport type ConnectionProviderProps = {\r\n  discordNode: {\r\n    webhookURL: string\r\n    content: string\r\n    webhookName: string\r\n    guildName: string\r\n  }\r\n  setDiscordNode: React.Dispatch<React.SetStateAction<any>>\r\n  googleNode: {}[]\r\n  setGoogleNode: React.Dispatch<React.SetStateAction<any>>\r\n  notionNode: {\r\n    accessToken: string\r\n    databaseId: string\r\n    workspaceName: string\r\n    content: ''\r\n  }\r\n  workflowTemplate: {\r\n    discord?: string\r\n    notion?: string\r\n    slack?: string\r\n  }\r\n  setNotionNode: React.Dispatch<React.SetStateAction<any>>\r\n  slackNode: {\r\n    appId: string\r\n    authedUserId: string\r\n    authedUserToken: string\r\n    slackAccessToken: string\r\n    botUserId: string\r\n    teamId: string\r\n    teamName: string\r\n    content: string\r\n  }\r\n  setSlackNode: React.Dispatch<React.SetStateAction<any>>\r\n  setWorkFlowTemplate: React.Dispatch<\r\n    React.SetStateAction<{\r\n      discord?: string\r\n      notion?: string\r\n      slack?: string\r\n    }>\r\n  >\r\n  isLoading: boolean\r\n  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>\r\n}"
+        }
+    ]
+}

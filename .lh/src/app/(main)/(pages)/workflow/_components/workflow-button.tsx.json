@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflow/_components/workflow-button.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1727003985929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1727003985929,
+            "name": "Commit-0",
+            "content": "'use client'\r\nimport React from 'react'\r\nimport { Plus} from 'lucide-react'\r\nimport { Button } from '@/components/ui/button'\r\nimport { useModal } from '@/providers/modal-provider'\r\nimport CustomModal from '@/components/global/custom-modal'\r\nimport Workflowform from '@/components/forms/workflow-form'\r\ntype Props = {}\r\n\r\nconst WorkflowButton = (props: Props) => {\r\n  const { setOpen, setClose } = useModal()\r\n\r\n\r\n  const handleClick = () => {\r\n    setOpen(\r\n      <CustomModal\r\n        title=\"Create a Workflow Automation\"\r\n        subheading=\"Workflows are a powerfull that help you automate tasks.\"\r\n      >\r\n        <Workflowform />\r\n      </CustomModal>\r\n    )\r\n  }\r\n\r\n  return (\r\n    <Button \r\n      size={'icon'} \r\n      onClick={handleClick}>\r\n      <Plus />\r\n    </Button>\r\n  )\r\n}\r\n\r\nexport default WorkflowButton"
+        }
+    ]
+}

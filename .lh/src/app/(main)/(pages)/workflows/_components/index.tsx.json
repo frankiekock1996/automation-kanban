@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/_components/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1727962267147,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1727962267147,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport Workflow\r\n from './workflow'\r\ntype Props = {}\r\n\r\nconst Workflows = (props: Props) => {\r\n  return (\r\n    <div className=\"relative flex flex-col gap-4\">\r\n      <section className=\"flex flex-col m-2\">\r\n        <Workflow description=\"creating a testflow\" id='e2345678' name='test' publish />\r\n      </section>\r\n    </div>\r\n     \r\n  )\r\n}\r\n\r\nexport default Workflows"
+        }
+    ]
+}

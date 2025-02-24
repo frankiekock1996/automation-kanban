@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/ui/time-picker.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1727576109882,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1727576109882,
+            "name": "Commit-0",
+            "content": "'use client';\r\n\r\nimport * as React from 'react';\r\nimport { Clock } from 'lucide-react';\r\nimport { Label } from '@/components/ui/label';\r\nimport { TimePickerInput } from './time-picker-input';\r\n\r\ninterface TimePickerProps {\r\n  date: Date | undefined;\r\n  setDate: (date: Date | undefined) => void;\r\n}\r\n\r\nexport function TimePicker({ date, setDate }: TimePickerProps) {\r\n  const minuteRef = React.useRef<HTMLInputElement>(null);\r\n  const hourRef = React.useRef<HTMLInputElement>(null);\r\n  const secondRef = React.useRef<HTMLInputElement>(null);\r\n\r\n  return (\r\n    <div className='flex items-end gap-2'>\r\n      <div className='grid gap-1 text-center'>\r\n        <Label htmlFor='hours' className='text-xs'>\r\n          Hours\r\n        </Label>\r\n        <TimePickerInput\r\n          picker='hours'\r\n          date={date}\r\n          setDate={setDate}\r\n          ref={hourRef}\r\n          onRightFocus={() => minuteRef.current?.focus()}\r\n        />\r\n      </div>\r\n      <div className='grid gap-1 text-center'>\r\n        <Label htmlFor='minutes' className='text-xs'>\r\n          Minutes\r\n        </Label>\r\n        <TimePickerInput\r\n          picker='minutes'\r\n          date={date}\r\n          setDate={setDate}\r\n          ref={minuteRef}\r\n          onLeftFocus={() => hourRef.current?.focus()}\r\n          onRightFocus={() => secondRef.current?.focus()}\r\n        />\r\n      </div>\r\n      <div className='grid gap-1 text-center'>\r\n        <Label htmlFor='seconds' className='text-xs'>\r\n          Seconds\r\n        </Label>\r\n        <TimePickerInput\r\n          picker='seconds'\r\n          date={date}\r\n          setDate={setDate}\r\n          ref={secondRef}\r\n          onLeftFocus={() => minuteRef.current?.focus()}\r\n        />\r\n      </div>\r\n      <div className='flex h-10 items-center'>\r\n        <Clock className='ml-2 h-4 w-4' />\r\n      </div>\r\n    </div>\r\n  );\r\n}"
+        }
+    ]
+}

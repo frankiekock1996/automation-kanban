@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/pages/login/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1737805399297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1737808590925,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import Head from 'next/head';\r\n-import { getSession, GetSessionParams } from 'next-auth/react';\r\n import Layout from '../../components/Layout/Layout';\r\n+import { getAuth } from '@clerk/nextjs/server';\r\n \r\n export default function Home() {\r\n     return (\r\n         <Layout>\r\n@@ -19,12 +19,12 @@\n         </Layout>\r\n     );\r\n }\r\n \r\n-export async function getServerSideProps(context: GetSessionParams) {\r\n-    const session = await getSession(context);\r\n+export async function getServerSideProps(context: any) {\r\n+    const { userId } = getAuth(context.req);\r\n \r\n-    if (!session) {\r\n+    if (!userId) {\r\n         return {\r\n             redirect: {\r\n                 destination: '/login',\r\n                 permanent: false,\r\n@@ -32,7 +32,7 @@\n         };\r\n     }\r\n \r\n     return {\r\n-        props: { session },\r\n+        props: { userId },\r\n     };\r\n }\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1737805399297,
+            "name": "Commit-0",
+            "content": "import Head from 'next/head';\r\nimport { getSession, GetSessionParams } from 'next-auth/react';\r\nimport Layout from '../../components/Layout/Layout';\r\n\r\nexport default function Home() {\r\n    return (\r\n        <Layout>\r\n            <Head>\r\n                <title>Kanban Board</title>\r\n                <meta name=\"description\" content=\"Task management web app\" />\r\n                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n                <link rel=\"icon\" href=\"/favicon.svg\" />\r\n            </Head>\r\n            <main className=\"text-bold flex h-full flex-col items-center justify-center overflow-scroll px-4 text-center font-jakarta text-lg text-mid-grey dark:text-white\">\r\n                <p id=\"empty-board-msg\" className=\"mb-8\">\r\n                    Create a new board or select an existing one to get started.\r\n                </p>\r\n            </main>\r\n        </Layout>\r\n    );\r\n}\r\n\r\nexport async function getServerSideProps(context: GetSessionParams) {\r\n    const session = await getSession(context);\r\n\r\n    if (!session) {\r\n        return {\r\n            redirect: {\r\n                destination: '/login',\r\n                permanent: false,\r\n            },\r\n        };\r\n    }\r\n\r\n    return {\r\n        props: { session },\r\n    };\r\n}"
+        }
+    ]
+}

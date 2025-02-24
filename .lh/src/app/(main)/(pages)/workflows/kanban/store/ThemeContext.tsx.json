@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/store/ThemeContext.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737291578472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737291578472,
+            "name": "Commit-0",
+            "content": "import React, { PropsWithChildren, useEffect } from 'react';\r\n\r\n// Check default color scheme preference OR apply one from local storage\r\nconst prefersDark = (() => {\r\n    if (typeof window === 'undefined') return false; // Return false if running on server\r\n    const localStoragePreference = localStorage.getItem('darkModeEnabled');\r\n    return localStoragePreference\r\n        ? localStoragePreference === 'true'\r\n        : window.matchMedia('(prefers-color-scheme: dark)').matches;\r\n})();\r\n\r\nexport const ThemeContext = React.createContext<{\r\n    darkModeEnabled: boolean;\r\n    toggleTheme: () => void;\r\n}>({\r\n    darkModeEnabled: true,\r\n    toggleTheme: () => {},\r\n});\r\n\r\nconst ThemeContextProvider: React.FC<PropsWithChildren> = (props) => {\r\n    const [darkModeEnabled, setDarkModeEnabled] = React.useState<boolean>(true);\r\n\r\n    const toggleTheme = () => {\r\n        setDarkModeEnabled((prevTheme) => !prevTheme);\r\n        localStorage.setItem('darkModeEnabled', (!darkModeEnabled).toString());\r\n    };\r\n\r\n    useEffect(() => {\r\n        setDarkModeEnabled(prefersDark);\r\n    }, []);\r\n\r\n    const contextValue = {\r\n        darkModeEnabled,\r\n        toggleTheme,\r\n    };\r\n\r\n    return <ThemeContext.Provider value={contextValue}>{props.children}</ThemeContext.Provider>;\r\n};\r\n\r\nexport default ThemeContextProvider;"
+        }
+    ]
+}

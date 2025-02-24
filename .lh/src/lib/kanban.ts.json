@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/lib/kanban.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1740144893534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1740219240026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,30 +9,36 @@\n   columns: (Column & {\r\n     tasks: Task[]\r\n   })[]\r\n }\r\n+export async function getBoard(boardId: string, userId?: string | null): Promise<BoardWithColumnsAndTasks | null> {\r\n+  if (!userId) {\r\n+    console.log('⚠️ getBoard called without userId');\r\n+    return null;\r\n+  }\r\n \r\n-export async function getBoard(boardId: string, userId?: string | null): Promise<BoardWithColumnsAndTasks | null> {\r\n-    if (!userId) return null;\r\n-  \r\n-    return db.board.findUnique({\r\n-      where: {\r\n-        uuid: boardId, // Use 'uuid' instead of 'id' since your schema uses 'uuid' as a unique identifier\r\n-        userId,\r\n-      },\r\n-      include: {\r\n-        columns: {\r\n-          include: {\r\n-            tasks: {\r\n-              orderBy: {\r\n-                position: 'asc',\r\n-              },\r\n-            },\r\n+  console.log('🔍 Querying board with UUID:', boardId, 'for user:', userId);\r\n+\r\n+  const board = await db.board.findUnique({\r\n+    where: {\r\n+      uuid: boardId, // ✅ Ensure we query using `uuid` (not `id`)\r\n+      userId,\r\n+    },\r\n+    include: {\r\n+      columns: {\r\n+        include: {\r\n+          tasks: {\r\n+            orderBy: { position: 'asc' },\r\n           },\r\n-          orderBy: {\r\n-            position: 'asc',\r\n-          },\r\n         },\r\n+        orderBy: { position: 'asc' },\r\n       },\r\n-    });\r\n+    },\r\n+  });\r\n+\r\n+  if (!board) {\r\n+    console.log('❌ No board found for UUID:', boardId);\r\n   }\r\n+\r\n+  return board;\r\n+}\r\n   \n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1740144893534,
+            "name": "Commit-0",
+            "content": "import { db } from '@/lib/db'\r\nimport { Board, Column, Task } from '@prisma/client'\r\n\r\nexport type BoardWithColumns = Board & {\r\n  columns: Column[]\r\n}\r\n\r\nexport type BoardWithColumnsAndTasks = Board & {\r\n  columns: (Column & {\r\n    tasks: Task[]\r\n  })[]\r\n}\r\n\r\nexport async function getBoard(boardId: string, userId?: string | null): Promise<BoardWithColumnsAndTasks | null> {\r\n    if (!userId) return null;\r\n  \r\n    return db.board.findUnique({\r\n      where: {\r\n        uuid: boardId, // Use 'uuid' instead of 'id' since your schema uses 'uuid' as a unique identifier\r\n        userId,\r\n      },\r\n      include: {\r\n        columns: {\r\n          include: {\r\n            tasks: {\r\n              orderBy: {\r\n                position: 'asc',\r\n              },\r\n            },\r\n          },\r\n          orderBy: {\r\n            position: 'asc',\r\n          },\r\n        },\r\n      },\r\n    });\r\n  }\r\n  "
+        }
+    ]
+}

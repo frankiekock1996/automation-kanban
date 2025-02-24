@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/ColorPicker/ColorPicker.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737274432228,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737274432228,
+            "name": "Commit-0",
+            "content": "import { Dispatch, FC, MouseEventHandler, SetStateAction, useState } from 'react';\r\nimport { HexColorInput, HexColorPicker } from 'react-colorful';\r\nimport { ButtonPrimary } from '../Buttons/Buttons';\r\nimport { Input } from '../Inputs/Inputs';\r\n\r\ntype ColorPickerProps = {\r\n    className?: string;\r\n    onSubmit: MouseEventHandler<HTMLButtonElement>;\r\n    initialColor: string;\r\n    setColor: Dispatch<SetStateAction<string>>;\r\n};\r\n\r\nconst ColorPicker: FC<ColorPickerProps> = ({\r\n    initialColor,\r\n    setColor: setParentColor,\r\n    className,\r\n    onSubmit: submitHandler,\r\n}) => {\r\n    const [color, setColor] = useState(initialColor);\r\n    return (\r\n        <div\r\n            data-testid=\"color-picker-container\"\r\n            className={`flex flex-col items-center rounded-md bg-white p-4 shadow-lg dark:bg-dark-grey dark:shadow-menu-dark ${\r\n                className ?? ''\r\n            }`}\r\n        >\r\n            <HexColorPicker\r\n                data-testid=\"color-picker\"\r\n                className=\"w-full\"\r\n                color={color}\r\n                onChange={(newColor) => {\r\n                    setColor(newColor);\r\n                    setParentColor(newColor);\r\n                }}\r\n            />\r\n            <HexColorInput\r\n                data-testid=\"color-input\"\r\n                className=\"mt-4 w-full bg-transparent text-center outline-none\"\r\n                color={color}\r\n                onChange={(newColor) => {\r\n                    setColor(newColor);\r\n                    setParentColor(newColor);\r\n                }}\r\n            />\r\n            <ButtonPrimary data-testid=\"color-submit\" onClick={submitHandler} className=\"mt-4\">\r\n                Confirm\r\n            </ButtonPrimary>\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default ColorPicker;"
+        }
+    ]
+}

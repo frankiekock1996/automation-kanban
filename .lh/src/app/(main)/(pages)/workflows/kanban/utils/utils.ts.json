@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/utils/utils.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737279314397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737279314397,
+            "name": "Commit-0",
+            "content": "// SWR fetcher\r\nexport const fetcher = async <JSON>(input: RequestInfo, init?: RequestInit): Promise<JSON> => {\r\n    const res = await fetch(input, init);\r\n    if (!res.ok) {\r\n        const error: Error & { status?: number } = new Error('An error occurred while fetching the data.');\r\n        // Attach extra info to the error object.\r\n        error.status = res.status;\r\n        throw error;\r\n    }\r\n    return res.json();\r\n};\r\n\r\nexport const randomHexColor = () => {\r\n    return (\r\n        '#' +\r\n        Math.floor(Math.random() * 16777215)\r\n            .toString(16)\r\n            .padStart(6, '0')\r\n    );\r\n};"
+        }
+    ]
+}

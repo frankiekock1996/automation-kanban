@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/Layout/Header/Logo.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737293728458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737293728458,
+            "name": "Commit-0",
+            "content": "import { LogoDark, LogoLight, LogoMobile } from '../../Icons/Icons';\r\n\r\nconst Logo = () => {\r\n    return (\r\n        <div id=\"logo\" className=\"bg-white py-5 px-4 dark:bg-[#2B2C37] sm:py-7 sm:px-6 lg:py-8 lg:px-8\">\r\n            <LogoLight className={`hidden dark:sm:block`} />\r\n            <LogoDark className={`hidden sm:block dark:sm:hidden`} />\r\n            <LogoMobile className={`sm:hidden`} />\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default Logo;"
+        }
+    ]
+}

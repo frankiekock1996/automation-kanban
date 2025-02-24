@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/components/BoardList/ThemeToggle.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1737291588674,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1737291588674,
+            "name": "Commit-0",
+            "content": "import { FC, useContext } from 'react';\r\nimport { ThemeContext } from '../../store/ThemeContext';\r\nimport { LightThemeIcon, DarkThemeIcon } from '../Icons/Icons';\r\n\r\nconst ThemeToggle: FC<{ className?: string }> = (props) => {\r\n    const { darkModeEnabled, toggleTheme } = useContext(ThemeContext);\r\n\r\n    return (\r\n        <div\r\n            id=\"theme-toggle\"\r\n            className={`mx-3 flex items-center justify-center rounded bg-light-grey py-3.5 dark:bg-v-dark-grey ${\r\n                props.className ?? ''\r\n            }`}\r\n        >\r\n            <LightThemeIcon />\r\n            <div className=\"group mx-5 h-6 w-12 items-center\">\r\n                <input\r\n                    id=\"themeSwitch\"\r\n                    type=\"checkbox\"\r\n                    className=\"hidden\"\r\n                    checked={darkModeEnabled}\r\n                    onChange={toggleTheme}\r\n                />\r\n                <label\r\n                    className={`flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-primary transition-all group-hover:bg-primary-light  `}\r\n                    htmlFor=\"themeSwitch\"\r\n                    role=\"switch\"\r\n                    aria-checked={darkModeEnabled}\r\n                    aria-label=\"Toggle dark mode\"\r\n                >\r\n                    <span\r\n                        className={`aspect-square w-4 cursor-pointer  rounded-full bg-white transition-all duration-300 ease-in-out ${\r\n                            darkModeEnabled ? 'translate-x-3/4' : '-translate-x-3/4'\r\n                        }`}\r\n                    ></span>\r\n                </label>\r\n            </div>\r\n            <DarkThemeIcon />\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default ThemeToggle;"
+        }
+    ]
+}
