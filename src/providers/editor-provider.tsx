@@ -1,6 +1,6 @@
 'use client'
 
-import { EditorActions, EditorNodeType, } from '@/lib/type'
+import { EditorActions, EditorNodeType, } from '@/lib/types'
 import {
   Dispatch,
   createContext,

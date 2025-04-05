@@ -38,7 +38,7 @@ const deleteBoard = async (req: NextApiRequest, res: NextApiResponse, userId: st
     const result = await prisma.board.deleteMany({
         where: {
             uuid: boardUUID,
-            userId: userId,
+            clerkId: userId,
         },
     });
     if (result.count === 0) return res.status(404).end('Board not found');
@@ -50,7 +50,7 @@ const getBoard = async (req: NextApiRequest, res: NextApiResponse, userId: strin
         const board = await prisma.board.findFirst({
             where: {
                 uuid: req.query.uuid?.toString(),
-                userId: userId,
+                clerkId: userId,
             },
             include: {
                 columns: {
@@ -90,7 +90,7 @@ const updateBoard = async (req: NextApiRequest, res: NextApiResponse, userId: st
     const currentBoardData = await prisma.board.findFirst({
         where: {
             uuid: boardUUID,
-            userId: userId,
+            clerkId: userId,
         },
         include: {
             columns: true,
@@ -126,7 +126,7 @@ const updateBoard = async (req: NextApiRequest, res: NextApiResponse, userId: st
     await prisma.$transaction(async () => {
         if (req.body.name !== currentBoardData.name) {
             await prisma.board.updateMany({
-                where: { uuid: boardUUID, userId: userId },
+                where: { uuid: boardUUID, clerkId: userId },
                 data: { name: req.body.name },
             });
         }
@@ -148,7 +148,7 @@ const updateBoard = async (req: NextApiRequest, res: NextApiResponse, userId: st
                     uuid: column.uuid,
                     name: column.name,
                     position: column.position,
-                    userId: userId,
+                    clerkId: userId,
                     color: column.color || randomHexColor(),
                     board: {
                         connect: {

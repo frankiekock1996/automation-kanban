@@ -1,0 +1,67 @@
+/* Rotating gradient border effect */
+.gradient-border {
+  position: relative;
+  border-radius: 12px;
+  background: transparent;
+  padding: 2px;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from -160deg at 50% 50%,
+    #e92a67 0deg,
+    #a853ba 120deg,
+    #2a8af6 240deg,
+    #e92a67 360deg
+  );
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate-border 2s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotate-border {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card-content {
+  background: hsl(var(--background));
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Control panel styling */
+.react-flow__controls {
+  background: hsl(var(--background)) !important;
+  border: 1px solid #a853ba !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__controls button {
+  color: #2a8af6 !important;
+  border-bottom: 1px solid #a853ba33 !important;
+  transition: all 0.2s ease;
+}
+
+.react-flow__controls button:hover {
+  background: rgba(42, 138, 246, 0.1) !important;
+  transform: scale(1.05);
+}
+
+.react-flow__controls button:first-child {
+  border-radius: 6px 6px 0 0 !important;
+}
+
+.react-flow__controls button:last-child {
+  border-radius: 0 0 6px 6px !important;
+}

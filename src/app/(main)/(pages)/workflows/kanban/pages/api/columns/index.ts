@@ -13,18 +13,18 @@ const isNewColumn = (column: unknown): column is NewColumn => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     // Use Clerk's auth to retrieve the authenticated user's ID
-    const { userId } = auth();
+    const { userId:clerkId } = auth();
 
-    if (!userId) {
+    if (!clerkId) {
         return res.status(401).end('Unauthorized');
     }
 
     switch (req.method) {
         case 'POST': {
-            return await createColumn(req, res, userId);
+            return await createColumn(req, res, clerkId);
         }
         case 'GET': {
-            return await getColumns(res, userId);
+            return await getColumns(res, clerkId);
         }
         default:
             res.status(405).end('Method not allowed');
@@ -32,20 +32,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 }
 
-const getColumns = async (res: NextApiResponse, userId: string) => {
+const getColumns = async (res: NextApiResponse, clerkId: string) => {
     try {
-        const tasks = await prisma.column.findMany({
+        const columns = await prisma.column.findMany({
             where: {
-                userId: userId,
+                board: {
+                    clerkId, // Ensure filtering through the related Board
+                },
             },
         });
-        res.status(200).json(tasks);
+        res.status(200).json(columns);
     } catch (error) {
         res.status(500).json({ error });
     }
 };
 
-const createColumn = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
+const createColumn = async (req: NextApiRequest, res: NextApiResponse, clerkId: string) => {
     const columnData: unknown = req.body;
     if (!isNewColumn(columnData)) {
         return res.status(400).json({ error: 'Invalid column data' });
@@ -59,11 +61,11 @@ const createColumn = async (req: NextApiRequest, res: NextApiResponse, userId: s
     const boardData = await prisma.board.findFirst({
         where: {
             uuid: columnData.board_uuid,
-            userId: userId,
+            clerkId // Ensures user owns the board
         },
         include: {
-            columns: true,
-        },
+            columns: true
+        }
     });
     if (!boardData) {
         return res.status(404).json({ error: 'Board not found' });
@@ -96,7 +98,7 @@ const createColumn = async (req: NextApiRequest, res: NextApiResponse, userId: s
                     color: columnData.color,
                     position: columnData.position as number,
                     uuid: uuidv4(),
-                    userId: userId,
+                    
                     board: {
                         connect: {
                             uuid: columnData.board_uuid,

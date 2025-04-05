@@ -10,7 +10,7 @@ type Board = {
     name: string;
     columns?: Column[];
     uuid: string;
-    userId: string;
+    clerkId: string;
 };
 
 type Column = {
@@ -21,17 +21,17 @@ type Column = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { userId } = auth(); // Clerk's `auth` method to get the authenticated user
-    if (!userId) {
+    const { userId:clerkId } = auth(); // Clerk's `auth` method to get the authenticated user
+    if (!clerkId) {
         return res.status(401).end('Unauthorized');
     }
 
     switch (req.method) {
         case 'POST': {
-            return await createBoard(req, res, userId);
+            return await createBoard(req, res, clerkId);
         }
         case 'GET': {
-            return await getBoards(res, userId);
+            return await getBoards(res, clerkId);
         }
         default:
             return res.status(405).end('Method not allowed');
@@ -48,11 +48,11 @@ const validateBoard = (board: Board) => {
     }
 };
 
-const getBoards = async (res: NextApiResponse, userId: string) => {
+const getBoards = async (res: NextApiResponse, clerkId: string) => {
     try {
         const boards = await prisma.board.findMany({
             where: {
-                userId, // Filter by the authenticated user's ID
+                clerkId, // Filter by the authenticated user's ID
             },
             include: {
                 columns: true,
@@ -64,12 +64,12 @@ const getBoards = async (res: NextApiResponse, userId: string) => {
     }
 };
 
-const createBoard = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
+const createBoard = async (req: NextApiRequest, res: NextApiResponse, clerkId: string) => {
     const boardData: { name: string; columns: { name: string; color: string }[] } = req.body;
     const board: Board = {
         name: boardData.name,
         uuid: uuidv4(),
-        userId,
+        clerkId,
     };
 
     if (boardData.columns) {
@@ -97,7 +97,7 @@ const createBoard = async (req: NextApiRequest, res: NextApiResponse, userId: st
         data: {
             name: board.name,
             uuid: board.uuid,
-            userId, // Associate the board with the authenticated user
+            clerkId, // Associate the board with the authenticated user
             columns: board.columns
                 ? {
                       createMany: {

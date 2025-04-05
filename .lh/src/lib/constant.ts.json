@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 1,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1726815072277,
@@ -12,6 +12,10 @@
                 {
                     "date": 1726815330189,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,8 +6,9 @@\n import Settings from '@/components/icons/settings'\r\n import Workflows from '@/components/icons/workflows'\r\n import Profile\r\n  from '@/components/icons/profile'\r\n+import { Connection } from './type'\r\n export const clients = [...new Array(10)].map((client, index) => ({\r\n   href: `/${index + 1}.png`,\r\n }))\r\n \r\n"
+                },
+                {
+                    "date": 1741956861975,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,9 +6,9 @@\n import Settings from '@/components/icons/settings'\r\n import Workflows from '@/components/icons/workflows'\r\n import Profile\r\n  from '@/components/icons/profile'\r\n-import { Connection } from './type'\r\n+import { Connection } from './types'\r\n export const clients = [...new Array(10)].map((client, index) => ({\r\n   href: `/${index + 1}.png`,\r\n }))\r\n \r\n"
                 }
             ],
             "date": 1726815072277,

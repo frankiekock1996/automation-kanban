@@ -70,7 +70,7 @@ const deleteColumn = async (req: NextApiRequest, res: NextApiResponse, userId: s
     const columnData = await prisma.column.findFirst({
         where: {
             uuid: columnUUID,
-            userId: userId,
+         clerkId   : userId,
         },
     });
     if (!columnData) {
@@ -98,7 +98,7 @@ const getColumn = async (req: NextApiRequest, res: NextApiResponse, userId: stri
         const column = await prisma.column.findFirst({
             where: {
                 uuid: columnUUID,
-                userId: userId,
+                clerkId: userId,
             },
             include: {
                 tasks: true,
@@ -120,7 +120,7 @@ const updateColumn = async (req: NextApiRequest, res: NextApiResponse, userId: s
     const currentColumnData = await prisma.column.findFirst({
         where: {
             uuid: columnUUID,
-            userId: userId,
+            clerkId: userId,
         },
     });
     if (!currentColumnData) {

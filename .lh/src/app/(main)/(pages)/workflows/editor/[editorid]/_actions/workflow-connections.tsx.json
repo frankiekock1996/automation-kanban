@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/editor/[editorid]/_actions/workflow-connections.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741511234441,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741511234441,
+            "name": "Commit-0",
+            "content": "'use server'\r\n\r\nimport { db } from '@/lib/db'\r\n\r\nexport const onCreateNodesEdges = async (\r\n  flowId: string,\r\n  nodes: string,\r\n  edges: string,\r\n  flowPath: string\r\n) => {\r\n  const flow = await db.workflow.update({\r\n    where: {\r\n      id: flowId,\r\n    },\r\n    data: {\r\n      nodes,\r\n      edges,\r\n      flowPath: flowPath,\r\n    },\r\n  })\r\n\r\n  if (flow) return { message: 'flow saved' }\r\n}\r\n\r\nexport const onFlowPublish = async (workflowId: string, state: boolean) => {\r\n  console.log(state)\r\n  const published = await db.workflow.update({\r\n    where: {\r\n      id: workflowId,\r\n    },\r\n    data: {\r\n      publish: state,\r\n    },\r\n  })\r\n\r\n  if (published.publish) return 'Workflow published'\r\n  return 'Workflow unpublished'\r\n}"
+        }
+    ]
+}

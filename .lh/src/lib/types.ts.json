@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/lib/types.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741956857948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741956857948,
+            "name": "Commit-0",
+            "content": "import { ConnectionProviderProps } from '@/providers/connections-provider'\r\nimport { z } from 'zod'\r\n\r\nexport const EditUserProfileSchema = z.object({\r\n    email: z.string().email('Required'),\r\n    name: z.string().min(1, 'Required'),\r\n  })\r\n  // export const WorkflowFormSchema = z.object({\r\n  //   name: z.string().min(1, 'Required'),\r\n  //   description: z.string().min(1, 'Required'),\r\n  // })\r\n\r\n  export const WorkflowFormSchema = z.object({\r\n    name: z.string().min(1, 'Required'),\r\n    description: z.string().min(1, 'Required'),\r\n    pilotStartDate: z.date().refine((val) => val !== null, 'Pilot Start Date is required'),\r\n    pilotEndDate: z.date().refine((val) => val !== null, 'Pilot End Date is required'),\r\n    frcDate: z.date().refine((val) => val !== null, 'FRC Date is required'),\r\n  });\r\n  \r\n \r\n  \r\nexport type ConnectionTypes = 'Google Drive' | 'Notion' | 'Slack' | 'Discord'\r\n\r\nexport type Connection = {\r\n  title: ConnectionTypes\r\n  description: string\r\n  image: string\r\n  connectionKey: keyof ConnectionProviderProps\r\n  accessTokenKey?: string\r\n  alwaysTrue?: boolean\r\n  slackSpecial?: boolean\r\n  // siteURL?: string\r\n}\r\n\r\nexport type EditorCanvasTypes =\r\n  | 'Email'\r\n  | 'Condition'\r\n  | 'AI'\r\n  | 'Slack'\r\n  | 'Google Drive'\r\n  | 'Notion'\r\n  | 'Custom Webhook'\r\n  | 'Google Calendar'\r\n  | 'Trigger'\r\n  | 'Action'\r\n  | 'Wait'\r\n\r\nexport type EditorCanvasCardType = {\r\n  title: string\r\n  description: string\r\n  completed: boolean\r\n  current: boolean\r\n  metadata: any\r\n  type: EditorCanvasTypes\r\n}\r\n\r\nexport type EditorNodeType = {\r\n  id: string\r\n  type: EditorCanvasCardType['type']\r\n  position: {\r\n    x: number\r\n    y: number\r\n  }\r\n  data: EditorCanvasCardType\r\n}\r\n\r\nexport type EditorNode = EditorNodeType\r\n\r\nexport type EditorActions =\r\n  | {\r\n      type: 'LOAD_DATA'\r\n      payload: {\r\n        elements: EditorNode[]\r\n        edges: {\r\n          id: string\r\n          source: string\r\n          target: string\r\n        }[]\r\n      }\r\n    }\r\n  | {\r\n      type: 'UPDATE_NODE'\r\n      payload: {\r\n        elements: EditorNode[]\r\n      }\r\n    }\r\n  | { type: 'REDO' }\r\n  | { type: 'UNDO' }\r\n  | {\r\n      type: 'SELECTED_ELEMENT'\r\n      payload: {\r\n        element: EditorNode\r\n      }\r\n    }\r\n\r\nexport const nodeMapper: Record<string, string> = {\r\n  Notion: 'notionNode',\r\n  Slack: 'slackNode',\r\n  Discord: 'discordNode',\r\n  'Google Drive': 'googleNode',\r\n}"
+        }
+    ]
+}

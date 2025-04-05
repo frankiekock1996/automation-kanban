@@ -42,7 +42,7 @@ const getTasks = async (res: NextApiResponse, userId: string) => {
     try {
         const tasks = await prisma.task.findMany({
             where: {
-                userId: userId,
+                clerkId: userId,
             },
         });
         res.status(200).json(tasks);

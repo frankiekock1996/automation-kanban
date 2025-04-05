@@ -3,11 +3,19 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 2,
             "patches": [
                 {
                     "date": 1728217919489,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1742029400772,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,27 +14,19 @@\n \r\n   return (\r\n     <Handle\r\n       {...props}\r\n-      isValidConnection={(e) => {\r\n-        const sourcesFromHandleInState = state.editor.edges.filter(\r\n-          (edge) => edge.source === e.source\r\n-        ).length\r\n-        const sourceNode = state.editor.elements.find(\r\n-          (node) => node.id === e.source\r\n-        )\r\n-        //target\r\n-        const targetFromHandleInState = state.editor.edges.filter(\r\n-          (edge) => edge.target === e.target\r\n-        ).length\r\n-\r\n-        if (targetFromHandleInState === 1) return false\r\n-        if (sourceNode?.type === 'Condition') return true\r\n-        if (sourcesFromHandleInState < 1) return true\r\n-        return false\r\n+      className=\"!bg-primary/75 !border-2 !border-background\"\r\n+      style={{\r\n+        width: '20px',\r\n+        height: '20px',\r\n+        // Remove any transform overrides\r\n       }}\r\n-      className=\"!-bottom-2 !h-4 !w-4 dark:bg-neutral-800\"\r\n+      isValidConnection={(connection) => {\r\n+        // Temporary simplified validation\r\n+        const isSameNode = connection.source === connection.target\r\n+        return !isSameNode\r\n+      }}\r\n     />\r\n   )\r\n }\r\n-\r\n export default CustomHandle\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1742029730085,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,19 +14,27 @@\n \r\n   return (\r\n     <Handle\r\n       {...props}\r\n-      className=\"!bg-primary/75 !border-2 !border-background\"\r\n-      style={{\r\n-        width: '20px',\r\n-        height: '20px',\r\n-        // Remove any transform overrides\r\n+      isValidConnection={(e) => {\r\n+        const sourcesFromHandleInState = state.editor.edges.filter(\r\n+          (edge) => edge.source === e.source\r\n+        ).length\r\n+        const sourceNode = state.editor.elements.find(\r\n+          (node) => node.id === e.source\r\n+        )\r\n+        //target\r\n+        const targetFromHandleInState = state.editor.edges.filter(\r\n+          (edge) => edge.target === e.target\r\n+        ).length\r\n+\r\n+        if (targetFromHandleInState === 1) return false\r\n+        if (sourceNode?.type === 'Condition') return true\r\n+        if (sourcesFromHandleInState < 1) return true\r\n+        return false\r\n       }}\r\n-      isValidConnection={(connection) => {\r\n-        // Temporary simplified validation\r\n-        const isSameNode = connection.source === connection.target\r\n-        return !isSameNode\r\n-      }}\r\n+      className=\"!-bottom-2 !h-4 !w-4 dark:bg-neutral-800\"\r\n     />\r\n   )\r\n }\r\n+\r\n export default CustomHandle\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1728217919489,

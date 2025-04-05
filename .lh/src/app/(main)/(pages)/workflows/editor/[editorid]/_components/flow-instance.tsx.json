@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/editor/[editorid]/_components/flow-instance.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1741527032950,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1741527032950,
+            "name": "Commit-0",
+            "content": "import { useNodeConnections } from \"@/providers/connections-provider\"\r\nimport { usePathname } from \"next/navigation\"\r\nimport { useCallback, useEffect, useState } from \"react\"\r\nimport { onCreateNodesEdges, onFlowPublish } from \"../_actions/workflow-connections\"\r\nimport { toast } from \"sonner\"\r\nimport { Button } from \"@/components/ui/button\"\r\n\r\ntype Props = {\r\n    children: React.ReactNode\r\n    edges: any[]\r\n    nodes: any[]\r\n  }\r\n  \r\nconst FlowInstance = ({ children, edges, nodes }: Props) => {\r\n    const pathname = usePathname()\r\n    const [isFlow, setIsFlow] = useState([])\r\n    const { nodeConnection } = useNodeConnections()\r\n\r\n    const onFlowAutomation = useCallback(async () => {\r\n        const flow = await onCreateNodesEdges(\r\n          pathname.split('/').pop()!,\r\n          JSON.stringify(nodes),\r\n          JSON.stringify(edges),\r\n          JSON.stringify(isFlow)\r\n        )\r\n        if (flow) toast.message(flow.message)\r\n        }, [nodeConnection])\r\n      \r\n        const onPublishWorkflow = useCallback(async () => {\r\n          const response = await onFlowPublish(pathname.split('/').pop()!, true)\r\n          if (response) toast.message(response)\r\n        }, [])\r\n      \r\n        const onAutomateFlow = async () => {\r\n          const flows: any = []\r\n          const connectedEdges = edges.map((edge) => edge.target)\r\n          connectedEdges.map((target) => {\r\n            nodes.map((node) => {\r\n              if (node.id === target) {\r\n                flows.push(node.type)\r\n              }\r\n            })\r\n          })\r\n      \r\n          setIsFlow(flows)\r\n        }\r\n      \r\n        useEffect(() => {\r\n          onAutomateFlow()\r\n        }, [edges])\r\n      \r\n        return (\r\n          <div className=\"flex flex-col gap-2\">\r\n            <div className=\"flex gap-3 p-4\">\r\n              <Button\r\n                onClick={onFlowAutomation}\r\n                disabled={isFlow.length < 1}\r\n              >\r\n                Save\r\n              </Button>\r\n              <Button\r\n                disabled={isFlow.length < 1}\r\n                onClick={onPublishWorkflow}\r\n              >\r\n                Publish\r\n              </Button>\r\n            </div>\r\n            {children}\r\n          </div>\r\n        )\r\n      }\r\n      \r\n      export default FlowInstance"
+        }
+    ]
+}

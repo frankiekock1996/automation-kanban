@@ -33,7 +33,7 @@ const updateSubtask = async (req: NextApiRequest, res: NextApiResponse, userId: 
     const currentSubtaskData = await prisma.subtask.findFirst({
         where: {
             uuid: subtaskUUID,
-            userId: userId, // Use Clerk's userId to validate ownership
+            clerkId: userId, // Use Clerk's userId to validate ownership
         },
     });
 

@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1728217919490,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1741956861979,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,9 +13,9 @@\n   Timer,\r\n   Webhook,\r\n   Zap,\r\n } from 'lucide-react'\r\n-import { EditorCanvasTypes } from '@/lib/type'\r\n+import { EditorCanvasTypes } from '@/lib/types'\r\n \r\n type Props = { type: EditorCanvasTypes }\r\n \r\n const EditorCanvasIconHelper = ({ type }: Props) => {\r\n"
                 }
             ],
             "date": 1728217919490,

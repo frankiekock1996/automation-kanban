@@ -10,18 +10,22 @@ export type BoardWithColumnsAndTasks = Board & {
     tasks: Task[]
   })[]
 }
-export async function getBoard(boardId: string, userId?: string | null): Promise<BoardWithColumnsAndTasks | null> {
-  if (!userId) {
-    console.log('⚠️ getBoard called without userId');
+// src/lib/kanban.ts
+export async function getBoard(
+  boardId: string,
+  clerkId: string // Changed from userId to clerkId
+): Promise<BoardWithColumnsAndTasks | null> {
+  if (!clerkId) {
+    console.log('⚠️ getBoard called without clerkId');
     return null;
   }
 
-  console.log('🔍 Querying board with UUID:', boardId, 'for user:', userId);
+  console.log('🔍 Querying board with UUID:', boardId, 'for user:', clerkId);
 
   const board = await db.board.findUnique({
     where: {
-      uuid: boardId, // ✅ Ensure we query using `uuid` (not `id`)
-      userId,
+      uuid: boardId,
+      clerkId: clerkId // Changed to match schema field name
     },
     include: {
       columns: {
@@ -37,8 +41,8 @@ export async function getBoard(boardId: string, userId?: string | null): Promise
 
   if (!board) {
     console.log('❌ No board found for UUID:', boardId);
+    return null;
   }
 
-  return board;
+  return board as BoardWithColumnsAndTasks;
 }
-  

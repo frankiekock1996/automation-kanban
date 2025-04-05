@@ -12,46 +12,34 @@ import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation'
 import { getBoard } from '@/lib/kanban'
 
-// ✅ Fix: Ensure boardId is correctly mapped to uuid
 export async function generateMetadata({
   params,
 }: {
   params: { boardId: string };
 }): Promise<Metadata> {
-  const { userId } = auth();
-  if (!userId) return { title: 'Kanban Board' };
+  const { userId: clerkId } = auth(); // Changed to userId with alias
+  if (!clerkId) return { title: 'Kanban Board' };
 
-  console.log('🔍 Generating metadata for board:', params.boardId);
-
-  const board = await getBoard(params.boardId, userId);
+  const board = await getBoard(params.boardId, clerkId);
   return {
     title: board?.name ? `Kanban - ${board.name}` : 'Kanban Board',
     description: 'Task management web app',
   };
 }
 
-// ✅ Fix: Ensure user authentication and correct boardId usage
 export default async function BoardPage({
   params,
 }: {
   params: { boardId: string };
 }) {
-  const { userId } = auth();
+  const { userId: clerkId } = auth(); // Changed to userId with alias
 
-  // Redirect if not authenticated
-  if (!userId) {
-    console.log('🚨 User not authenticated, redirecting to sign-in');
+  if (!clerkId) {
     redirect('/sign-in');
   }
 
-  console.log('🔍 Fetching board with UUID:', params.boardId, 'for user:', userId);
-  const board = await getBoard(params.boardId, userId);
-
-  // Handle 404 if board is not found
-  if (!board) {
-    console.log('❌ Board not found, returning 404:', params.boardId);
-    notFound();
-  }
+  const board = await getBoard(params.boardId, clerkId);
+  if (!board) notFound();
 
   return (
     <Layout>

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/workflows/kanban/pages/middleware.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1740919348371,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1740919348371,
+            "name": "Commit-0",
+            "content": "// pages/middleware.ts\r\nimport { NextResponse } from 'next/server';\r\nimport type { NextRequest } from 'next/server';\r\nimport { validate } from 'uuid';\r\n\r\nexport function middleware(req: NextRequest) {\r\n    const uuid = req.nextUrl.pathname.split('/').pop();\r\n    if (!uuid || !validate(uuid)) {\r\n        return NextResponse.redirect(new URL('/404', req.url));\r\n    }\r\n}\r\n"
+        }
+    ]
+}
