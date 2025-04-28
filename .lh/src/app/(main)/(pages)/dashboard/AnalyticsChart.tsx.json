@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/dashboard/AnalyticsChart.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745839018265,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745839018265,
+            "name": "Commit-0",
+            "content": "'use client';\r\n\r\nimport React, { useState } from \"react\";\r\n\r\nimport {\r\n  LineChart,\r\n  Line,\r\n  XAxis,\r\n  YAxis,\r\n  CartesianGrid,\r\n  ResponsiveContainer,\r\n} from 'recharts';\r\nimport {\r\n  Card,\r\n  CardContent,\r\n  CardDescription,\r\n  CardHeader,\r\n  CardTitle,\r\n} from '@/components/ui/card';\r\nimport {\r\n  Select,\r\n  SelectContent,\r\n  SelectGroup,\r\n  SelectItem,\r\n  SelectTrigger,\r\n  SelectValue,\r\n} from \"@/components/ui/select\"\r\n\r\nimport data from '@/data/analytics';\r\n\r\nconst availableFilters = [\r\n  {\r\n    value: \"uv\",\r\n    label: \"Unique Visitors\",\r\n  },\r\n  {\r\n    value: \"pv\",\r\n    label: \"Page Views\",\r\n  },\r\n  {\r\n    value: \"amt\",\r\n    label: \"Amount\",\r\n  }\r\n]\r\n\r\nconst AnalyticsChart = () => {\r\n\r\n  const [selection, setSelection] = useState(\"pv\");\r\n\r\n  return (\r\n    <>\r\n      <Card>\r\n        <CardHeader>\r\n          <CardTitle>Analytics For This Year</CardTitle>\r\n          <CardDescription>Views Per Month</CardDescription>\r\n          <Select onValueChange={setSelection} defaultValue=\"pv\">\r\n          <SelectTrigger className=\"w-96 h-8\">\r\n            <SelectValue placeholder=\"Select Account\" />\r\n          </SelectTrigger>\r\n          <SelectContent>\r\n            <SelectGroup>\r\n             {availableFilters.map((filter) => (\r\n                <SelectItem key={filter.value} value={filter.value}>\r\n                  {filter.label}\r\n                </SelectItem>\r\n              ))}\r\n            </SelectGroup>\r\n          </SelectContent>\r\n        </Select>\r\n        </CardHeader>\r\n        <CardContent>\r\n          <div style={{ width: '100%', height: 300 }}>\r\n            <ResponsiveContainer>\r\n              <LineChart width={1100} height={300} data={data}>\r\n                <Line type='monotone' dataKey={selection} stroke='#8884d8' />\r\n                <CartesianGrid stroke='#ccc' />\r\n                <XAxis dataKey='name' />\r\n                <YAxis />\r\n              </LineChart>\r\n            </ResponsiveContainer>\r\n          </div>\r\n        </CardContent>\r\n      </Card>\r\n    </>\r\n  );\r\n};\r\n\r\nexport default AnalyticsChart;"
+        }
+    ]
+}

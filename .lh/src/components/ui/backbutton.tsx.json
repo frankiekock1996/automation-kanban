@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/ui/backbutton.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745841195129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745841195129,
+            "name": "Commit-0",
+            "content": "import { ArrowLeftCircle } from 'lucide-react';\r\nimport Link from 'next/link';\r\n\r\ninterface BackButtonProps {\r\n  text: string;\r\n  link: string;\r\n}\r\n\r\nconst BackButton = ({ text, link }: BackButtonProps) => {\r\n  return (\r\n    <Link\r\n      href={link}\r\n      className='text-gray-500 hover:underline flex items-center gap-1 font-bold mb-5'\r\n    >\r\n      <ArrowLeftCircle size={18} /> {text}\r\n    </Link>\r\n  );\r\n};\r\n\r\nexport default BackButton;"
+        }
+    ]
+}

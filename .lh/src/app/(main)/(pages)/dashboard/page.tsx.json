@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/dashboard/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1745840081347,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745840153945,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,56 @@\n+import React from 'react'\r\n+import DashboardCard from './DashboardCard'\r\n+import { Folder, MessageCircle, Newspaper, User, FolderX, FolderCheck } from 'lucide-react';\r\n+\r\n+import AnalyticsChart from './AnalyticsChart';\r\n+import PostsTable from '@/components/posts/PostsTable';\r\n+import PostsPagination from '@/components/posts/PostPagination';\r\n+\r\n+\r\n+export default function Home() {\r\n+  return (\r\n+    <>\r\n+      <div className='flex flex-col md:flex-row justify-between gap-5 mb-5'>\r\n+        <DashboardCard\r\n+          title='Unit built'\r\n+          count={100}\r\n+          icon={<Newspaper className='text-slate-500' size={72} />}\r\n+        />\r\n+        <DashboardCard\r\n+          title='Categories'\r\n+          count={12}\r\n+          icon={<User className='text-slate-500' size={72} />}\r\n+        />\r\n+        <DashboardCard\r\n+          title='Unit passed'\r\n+          count={750}\r\n+          icon={<FolderCheck className='text-slate-500' size={72} />}\r\n+        />\r\n+        <DashboardCard\r\n+          title='Unit failed'\r\n+          count={1200}\r\n+          icon={<FolderX className='text-slate-500' size={72} />}\r\n+        />\r\n+      </div>\r\n+      <AnalyticsChart />\r\n+      <PostsTable title='Latest Posts' limit={15} />\r\n+      <PostsPagination/>\r\n+    </>\r\n+  );\r\n+}\r\n+\r\n+\r\n+\r\n+\r\n+// const DashboardPage = () => {\r\n+//   return (\r\n+//     <div className=\"flex flex-col gap-4 relative\">\r\n+//       <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b\">\r\n+//         Dashboard\r\n+//       </h1>\r\n+      \r\n+//     </div>\r\n+//   )\r\n+// }\r\n+\r\n+// export default DashboardPage\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1745840081347,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport DashboardCard from './DashboardCard'\r\nimport { Folder, MessageCircle, Newspaper, User, FolderX, FolderCheck } from 'lucide-react';\r\n\r\nimport AnalyticsChart from './AnalyticsChart';\r\n\r\n\r\nexport default function Home() {\r\n  return (\r\n    <>\r\n      <div className='flex flex-col md:flex-row justify-between gap-5 mb-5'>\r\n        <DashboardCard\r\n          title='Unit built'\r\n          count={100}\r\n          icon={<Newspaper className='text-slate-500' size={72} />}\r\n        />\r\n        <DashboardCard\r\n          title='Categories'\r\n          count={12}\r\n          icon={<User className='text-slate-500' size={72} />}\r\n        />\r\n        <DashboardCard\r\n          title='Unit passed'\r\n          count={750}\r\n          icon={<FolderCheck className='text-slate-500' size={72} />}\r\n        />\r\n        <DashboardCard\r\n          title='Unit failed'\r\n          count={1200}\r\n          icon={<FolderX className='text-slate-500' size={72} />}\r\n        />\r\n      </div>\r\n      <AnalyticsChart />\r\n      <PostsTable title='Latest Posts' limit={15} />\r\n      <PostsPagination/>\r\n    </>\r\n  );\r\n}\r\n\r\n\r\n\r\n\r\n// const DashboardPage = () => {\r\n//   return (\r\n//     <div className=\"flex flex-col gap-4 relative\">\r\n//       <h1 className=\"text-4xl sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b\">\r\n//         Dashboard\r\n//       </h1>\r\n      \r\n//     </div>\r\n//   )\r\n// }\r\n\r\n// export default DashboardPage"
+        }
+    ]
+}

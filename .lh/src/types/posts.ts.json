@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/types/posts.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745838917364,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745838917364,
+            "name": "Commit-0",
+            "content": "export interface Post {\r\n    id: string;\r\n    title: string;\r\n    body: string;\r\n    author: string;\r\n    date: string;\r\n    comments: PostComment[];\r\n  }\r\n  \r\n  export interface PostComment {\r\n    id: string;\r\n    text: string;\r\n    username: string;\r\n  }"
+        }
+    ]
+}

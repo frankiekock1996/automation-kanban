@@ -100,7 +100,7 @@ export const menuOptions = [
   { name: 'Workflows', Component: Workflows, href: '/workflows' },
   { name: 'Settings', Component: Settings, href: '/settings' },
   { name: 'Connections', Component: Category, href: '/connections' },
-  { name: 'View All Projects', Component: Teamwork, href: '/teamwork' },
+  { name: 'Billboard', Component: Teamwork, href: '/billboard' },
   { name: 'Templates', Component: Templates, href: '/templates' },
   { name: 'Logs', Component: Logs, href: '/logs' },
 ]

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/dashboard/DashboardCard.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745838989129,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745838989129,
+            "name": "Commit-0",
+            "content": "import { Card, CardContent } from '@/components/ui/card';\r\nimport { LucideIcon } from 'lucide-react';\r\nimport React from 'react'\r\n\r\ninterface DashboardCardProps {\r\n  title: string;\r\n  count: number;\r\n  icon: React.ReactElement<LucideIcon>;\r\n}\r\n\r\nconst DashboardCard = ({ title, count, icon }: DashboardCardProps) => {\r\n  return (\r\n    <Card className='bg-slate-100 dark:bg-slate-800 p-4 pb-0'>\r\n      <CardContent>\r\n        <h3 className='text-3xl text-center mb-4 font-bold text-slate-500 dark:text-slate-200'>\r\n          {title}\r\n        </h3>\r\n        <div className='flex gap-5 justify-center items-center'>\r\n          {icon}\r\n          <h3 className='text-5xl font-semibold text-slate-500 dark:text-slate-200'>\r\n            {count}\r\n          </h3>\r\n        </div>\r\n      </CardContent>\r\n    </Card>\r\n  );\r\n};\r\n\r\nexport default DashboardCard;"
+        }
+    ]
+}

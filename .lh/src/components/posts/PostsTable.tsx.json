@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/components/posts/PostsTable.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745840141258,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745840141258,
+            "name": "Commit-0",
+            "content": "\r\nimport {\r\n    Table,\r\n    TableBody,\r\n    TableCell,\r\n    TableHead,\r\n    TableHeader,\r\n    TableRow,\r\n    TableCaption,\r\n  } from '@/components/ui/table';\r\n  import Link from 'next/link';\r\n  import posts from '@/data/posts';\r\n  import { Post } from '@/types/posts';\r\n  \r\n  interface PostsTableProps {\r\n    limit?: number;\r\n    title?: string;\r\n  }\r\n  \r\n  const PostsTable = ({ limit, title }: PostsTableProps) => {\r\n    // Sort posts in dec order based on date\r\n    const sortedPosts: Post[] = [...posts].sort(\r\n      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()\r\n    );\r\n  \r\n    // Filter posts to limit\r\n    const filteredPosts = limit ? sortedPosts.slice(0, limit) : sortedPosts;\r\n  \r\n    return (\r\n      <div className='mt-10'>\r\n        <h3 className='text-2xl mb-4 font-semibold'>{title ? title : 'Posts'}</h3>\r\n        <Table>\r\n          <TableCaption>A list of recent posts</TableCaption>\r\n          <TableHeader>\r\n            <TableRow>\r\n              <TableHead>Title</TableHead>\r\n              <TableHead className='hidden md:table-cell'>Author</TableHead>\r\n              <TableHead className='hidden md:table-cell text-right'>\r\n                Date\r\n              </TableHead>\r\n              <TableHead>View</TableHead>\r\n            </TableRow>\r\n          </TableHeader>\r\n          <TableBody>\r\n            {filteredPosts.map((post) => (\r\n              <TableRow key={post.id}>\r\n                <TableCell>{post.title}</TableCell>\r\n                <TableCell className='hidden md:table-cell'>\r\n                  {post.author}\r\n                </TableCell>\r\n                <TableCell className='text-right hidden md:table-cell'>\r\n                  {post.date}\r\n                </TableCell>\r\n                <TableCell>\r\n                  <Link href={`/billboard/edit/${post.id}`}>\r\n                    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-xs'>\r\n                      Edit\r\n                    </button>\r\n                  </Link>\r\n                </TableCell>\r\n              </TableRow>\r\n            ))}\r\n          </TableBody>\r\n        </Table>\r\n      </div>\r\n    );\r\n  };\r\n  \r\n  export default PostsTable;\r\n"
+        }
+    ]
+}

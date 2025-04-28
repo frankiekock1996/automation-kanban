@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1737279322967,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1743908002049,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,10 @@\n import { Board } from '@/types';\r\n import useSWR from 'swr';\r\n import type { KeyedMutator } from 'swr';\r\n import { fetcher } from '../utils/utils';\r\n-import { useSession } from 'next-auth/react';\r\n+import { useUser } from '@clerk/nextjs';\r\n+// import { useSession } from 'next-auth/react';\r\n \r\n export type BoardListContextProps = {\r\n     boards?: Board[];\r\n     selectedBoard: Board | null;\r\n@@ -28,13 +29,16 @@\n     mutateBoards: () => Promise.resolve([]),\r\n });\r\n \r\n const BoardListContextProvider: React.FC<PropsWithChildren<{ value?: BoardListContextProps }>> = (props) => {\r\n-    const session = useSession();\r\n-    if (!session || session.status === 'unauthenticated') {\r\n-        return <>{props.children}</>;\r\n-    }\r\n-\r\n+    // const session = useSession();\r\n+    // if (!session || session.status === 'unauthenticated') {\r\n+    //     return <>{props.children}</>;\r\n+    // }\r\n+    const { user, isLoaded } = useUser();\r\n+    if (!isLoaded) return null;\r\n+    if (!user) return <>{props.children}</>;\r\n+    \r\n     const router = useRouter();\r\n \r\n     const [selectedBoard, setSelectedBoard] = React.useState<Board | null>(null);\r\n     const [selectedTask, setSelectedTask] = React.useState<string | null>(null);\r\n"
                 }
             ],
             "date": 1737279322967,

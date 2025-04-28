@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 14,
+            "activePatchIndex": 19,
             "patches": [
                 {
                     "date": 1727962267189,
@@ -64,6 +64,26 @@
                 {
                     "date": 1742056415982,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${boardId}`}>\r\n-        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n+      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n+        <Link href={`/workflows/editor/${id}`}>\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1743854329602,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n-        <Link href={`/workflows/editor/${id}`}>\r\n+      <Link href={`/workflows/kanban/${boardId}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1743854515157,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${boardId}`}>\r\n-        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n+      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n+        <Link href={`/workflows/editor/${id}`}>\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1743906757199,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n type Props = {\r\n   name: string\r\n   description: string\r\n   id: string\r\n-  boardId:string\r\n+  boardId:string | null\r\n   publish: boolean | null\r\n }\r\n \r\n const Workflow = ({ description, id, name, publish,boardId }: Props) => {\r\n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n-        <Link href={`/workflows/editor/${id}`}>\r\n+      <Link href={`/workflows/kanban/${boardId}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1743940570867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      <Link href={`/workflows/kanban/${boardId}`}>\r\n-        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n+      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n+        <Link href={`/workflows/editor/${id}`}>\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
+                },
+                {
+                    "date": 1744362629143,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,10 +31,10 @@\n \r\n   return (\r\n     <Card className=\"flex w-full items-center justify-between\">\r\n       <CardHeader className=\"flex flex-col gap-4\">\r\n-      {/* <Link href={`/workflows/kanban/${boardId}`}> */}\r\n-        <Link href={`/workflows/editor/${id}`}>\r\n+      <Link href={`/workflows/kanban/${boardId}`}>\r\n+        {/* <Link href={`/workflows/editor/${id}`}> */}\r\n           <div className=\"flex flex-row gap-2\">\r\n             <Image\r\n               src=\"/googleDrive.png\"\r\n               alt=\"Google Drive\"\r\n"
                 }
             ],
             "date": 1727962267189,
