@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/hooks/usePopover.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745849406052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745849406052,
+            "name": "Commit-0",
+            "content": "import { useEffect, useRef, useState } from 'react';\r\nimport ReactDOM from 'react-dom';\r\nimport React from 'react';\r\nimport useClickOutside from './useClickOutside';\r\n\r\ntype PopoverHook = {\r\n    anchorEl: HTMLElement | null;\r\n    isOpen: boolean;\r\n    open: (event: React.MouseEvent | React.KeyboardEvent) => void;\r\n    close: () => void;\r\n    toggle: (event: React.MouseEvent | React.KeyboardEvent) => void;\r\n    Component: React.FC<React.PropsWithChildren<{ anchorWidth?: boolean; className?: string }>>;\r\n};\r\n\r\nconst usePopover = (): PopoverHook => {\r\n    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);\r\n    const [isOpen, setIsOpen] = useState(false);\r\n    const [popoverRoot, setPopoverRoot] = useState<HTMLElement | null>(null);\r\n    const popoverRef = useRef<HTMLDivElement>(null);\r\n\r\n    useClickOutside(popoverRef, (e) => {\r\n        if (e.target === anchorEl) return;\r\n        setIsOpen(false);\r\n    });\r\n\r\n    const open = (event: React.MouseEvent | React.KeyboardEvent) => {\r\n        setAnchorEl(event.currentTarget as HTMLElement);\r\n        setIsOpen(true);\r\n    };\r\n\r\n    const close = () => {\r\n        setAnchorEl(null);\r\n        setIsOpen(false);\r\n    };\r\n\r\n    const toggle = (event: React.MouseEvent | React.KeyboardEvent) => {\r\n        if (isOpen) {\r\n            close();\r\n        } else {\r\n            open(event);\r\n        }\r\n    };\r\n\r\n    const Component = (props: React.PropsWithChildren<{ anchorWidth?: boolean; className?: string }>) => {\r\n        const handleResize = () => {\r\n            if (isOpen) {\r\n                const pos = anchorEl?.getBoundingClientRect();\r\n                const style = {\r\n                    top: pos?.top,\r\n                    left: pos?.left,\r\n                    width: props.anchorWidth ? pos?.width : undefined,\r\n                };\r\n                popoverRef.current?.setAttribute(\r\n                    'style',\r\n                    `top: ${style.top}px; left: ${style.left}px; width: ${style.width}px`\r\n                );\r\n            }\r\n        };\r\n\r\n        useEffect(() => {\r\n            if (popoverRef.current) handleResize();\r\n        }, [popoverRef.current]);\r\n\r\n        useEffect(() => {\r\n            window.addEventListener('resize', handleResize);\r\n            return () => window.removeEventListener('resize', handleResize);\r\n        }, [isOpen]);\r\n\r\n        return isOpen && popoverRoot\r\n            ? ReactDOM.createPortal(\r\n                  <div ref={popoverRef} className={`absolute z-50 ${props.className}`}>\r\n                      {props.children}\r\n                  </div>,\r\n                  popoverRoot\r\n              )\r\n            : null;\r\n    };\r\n\r\n    useEffect(() => {\r\n        setPopoverRoot(document.getElementById('popover-root'));\r\n    }, []);\r\n\r\n    return { anchorEl, isOpen, open, close, toggle, Component };\r\n};\r\n\r\nexport default usePopover;\r\n"
+        }
+    ]
+}

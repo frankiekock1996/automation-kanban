@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1737214325295,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1745884386677,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,9 @@\n     UniqueIdentifier,\r\n     {\r\n         board_uuid: string;\r\n         uuid: string;\r\n+        position: number;\r\n         color: string;\r\n         tasks: Task[];\r\n     }\r\n >;\r\n"
                 }
             ],
             "date": 1737214325295,

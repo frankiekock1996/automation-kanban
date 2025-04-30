@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/(kanban)/_components/Spinner/utils/test-utils.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745847584475,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745847584475,
+            "name": "Commit-0",
+            "content": "\r\nimport { Board } from '@/types';\r\nimport { v4 as uuidv4 } from 'uuid';\r\n\r\n// Sample data for boards and board list context\r\nconst sharedProps = {\r\n    created_at: new Date(),\r\n    updated_at: new Date(),\r\n    user_uuid: uuidv4(),\r\n    columns: [],\r\n};\r\nexport const testBoards: Board[] = [\r\n    {\r\n        name: 'Platform Launch',\r\n        uuid: uuidv4(),\r\n        id: 1,\r\n        ...sharedProps,\r\n    },\r\n    {\r\n        name: 'Marketing Plan',\r\n        uuid: uuidv4(),\r\n        id: 2,\r\n        ...sharedProps,\r\n    },\r\n    {\r\n        name: 'Roadmap',\r\n        uuid: uuidv4(),\r\n        id: 3,\r\n        ...sharedProps,\r\n    },\r\n];\r\n\r\nexport const boardsCtxValue = {\r\n    boards: testBoards,\r\n    selectedBoard: testBoards[1].uuid,\r\n    isLoading: false,\r\n    error: null,\r\n    mutateBoards: () => Promise.resolve([]),\r\n};\r\n\r\nexport * from '@testing-library/react';\r\n"
+        }
+    ]
+}

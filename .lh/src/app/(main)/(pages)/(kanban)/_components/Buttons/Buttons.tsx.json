@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/(kanban)/_components/Buttons/Buttons.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745855054112,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745855054112,
+            "name": "Commit-0",
+            "content": "import { FC } from 'react';\r\n\r\nconst Button: FC<{ fullWidth?: boolean; className?: string; large?: boolean } & React.ComponentProps<'button'>> = (\r\n    props\r\n) => {\r\n    const { fullWidth, large, className, ...restProps } = props;\r\n    return (\r\n        <button\r\n            className={`whitespace-nowrap rounded-full font-jakarta  font-bold text-white transition-colors disabled:opacity-25 ${\r\n                fullWidth ? 'w-full' : 'w-fit'\r\n            } ${className || ''} ${large ? 'py-4 px-6 text-base' : 'py-2 px-4 text-sm'}`}\r\n            {...restProps}\r\n        >\r\n            {props.children}\r\n        </button>\r\n    );\r\n};\r\n\r\nconst ButtonPrimaryLarge: FC<React.ComponentProps<'button'>> = (props) => {\r\n    const { className, ...restProps } = props;\r\n    return (\r\n        <Button\r\n            large\r\n            className={`bg-primary leading-4 enabled:hover:bg-primary-light ${className || ''}`}\r\n            {...restProps}\r\n        >\r\n            {props.children}\r\n        </Button>\r\n    );\r\n};\r\n\r\nconst ButtonPrimary: FC<React.ComponentProps<'button'>> = (props) => {\r\n    const { className, ...restProps } = props;\r\n    return (\r\n        <Button fullWidth className={`bg-primary enabled:hover:bg-primary-light ${className || ''}`} {...restProps}>\r\n            {props.children}\r\n        </Button>\r\n    );\r\n};\r\n\r\nconst ButtonSecondary: FC<React.ComponentProps<'button'>> = (props) => {\r\n    const { className, ...restProps } = props;\r\n    return (\r\n        <Button\r\n            fullWidth\r\n            className={`enabled:hover:bg-secondary-light bg-primary bg-opacity-10 !text-primary hover:bg-opacity-25 dark:bg-white dark:bg-opacity-100 dark:hover:bg-opacity-100 ${\r\n                className || ''\r\n            }`}\r\n            {...restProps}\r\n        >\r\n            {props.children}\r\n        </Button>\r\n    );\r\n};\r\n\r\nconst ButtonDanger: FC<React.ComponentProps<'button'>> = (props) => {\r\n    const { className, ...restProps } = props;\r\n    return (\r\n        <Button fullWidth className={`bg-danger enabled:hover:bg-danger-light ${className || ''}`} {...restProps}>\r\n            {props.children}\r\n        </Button>\r\n    );\r\n};\r\n\r\nexport { ButtonPrimaryLarge, ButtonSecondary, ButtonPrimary, ButtonDanger, Button };\r\n"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/(kanban)/_components/Modals/MobileMenu.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745855283191,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745855283191,
+            "name": "Commit-0",
+            "content": "import React, { Dispatch, FC, SetStateAction } from 'react';\r\nimport BoardList from '../BoardList/BoardList';\r\nimport ThemeToggle from '../BoardList/ThemeToggle';\r\n\r\nconst MobileMenu: FC<{\r\n    setMenuIsOpen: Dispatch<SetStateAction<boolean>>;\r\n}> = (props) => {\r\n    const closeMenuHandler = () => {\r\n        props.setMenuIsOpen(false);\r\n    };\r\n\r\n    return (\r\n        <div className=\"flex flex-col\">\r\n            <BoardList handleBoardSelect={closeMenuHandler} />\r\n            <ThemeToggle className=\"mt-4\" />\r\n        </div>\r\n    );\r\n};\r\n\r\nexport default MobileMenu;\r\n"
+        }
+    ]
+}

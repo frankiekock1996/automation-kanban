@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/hooks/useClickOutside.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745849367310,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745849367310,
+            "name": "Commit-0",
+            "content": "import { useEffect } from 'react';\r\n\r\ntype ClickEvent = MouseEvent | TouchEvent;\r\ntype ClickOutsideHook = (ref: React.RefObject<HTMLElement | null>, handler: (e: ClickEvent) => void) => void;\r\n\r\nconst useClickOutside: ClickOutsideHook = (ref, handler) => {\r\n    useEffect(() => {\r\n        let startedInside = false;\r\n        let startedWhenMounted = false;\r\n\r\n        const listener = (event: ClickEvent) => {\r\n            if (startedInside || !startedWhenMounted) return;\r\n            if (!ref.current || ref.current.contains(event.target as Node)) return;\r\n\r\n            handler(event);\r\n        };\r\n\r\n        const validateEventStart = (event: ClickEvent) => {\r\n            startedWhenMounted = !!ref.current;\r\n            startedInside = !!ref.current && ref.current.contains(event.target as Node);\r\n        };\r\n\r\n        document.addEventListener('mousedown', validateEventStart);\r\n        document.addEventListener('touchstart', validateEventStart);\r\n        document.addEventListener('mouseup', listener);\r\n        document.addEventListener('touchend', listener);\r\n\r\n        return () => {\r\n            document.removeEventListener('mousedown', validateEventStart);\r\n            document.removeEventListener('touchstart', validateEventStart);\r\n            document.removeEventListener('mouseup', listener);\r\n            document.removeEventListener('touchend', listener);\r\n        };\r\n    }, [ref, handler]);\r\n};\r\n\r\nexport default useClickOutside;\r\n"
+        }
+    ]
+}

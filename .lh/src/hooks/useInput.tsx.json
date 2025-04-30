@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/hooks/useInput.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745849384599,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745849384599,
+            "name": "Commit-0",
+            "content": "import { useState } from 'react';\r\nimport type { MultiInputChangeEvent } from '../types';\r\n\r\ntype InputHook<T> = {\r\n    value: T | undefined;\r\n    isValid?: boolean;\r\n    hasError?: boolean;\r\n    errorMsg?: string;\r\n    setValue: (val: T) => void;\r\n    setIsTouched: (val: boolean) => void;\r\n    valueChangeHandler: (e: MultiInputChangeEvent) => void;\r\n    customValueChangeHandler: (val: T) => void;\r\n    inputBlurHandler: (e: MultiInputChangeEvent) => void;\r\n};\r\n\r\nfunction useInput<T>(options?: { validateFn?: (value: T) => [boolean, string]; initialValue?: T }): InputHook<T> {\r\n    const [value, setValue] = useState<T | undefined>(options?.initialValue ?? undefined);\r\n    const [isTouched, setIsTouched] = useState(false);\r\n\r\n    const [isValid, errorMsg] = options?.validateFn ? options.validateFn(value as T) : [true, ''];\r\n    const hasError = !isValid && isTouched;\r\n\r\n    const valueChangeHandler = (e: MultiInputChangeEvent) => {\r\n        setValue(e.target.value as T);\r\n    };\r\n\r\n    const customValueChangeHandler = (val: T) => {\r\n        setValue(val);\r\n    };\r\n\r\n    const inputBlurHandler = (e: MultiInputChangeEvent) => {\r\n        setIsTouched(true);\r\n    };\r\n\r\n    if (!options?.validateFn) {\r\n        return {\r\n            value,\r\n            setValue,\r\n            valueChangeHandler,\r\n            customValueChangeHandler,\r\n            inputBlurHandler,\r\n            setIsTouched,\r\n        };\r\n    }\r\n\r\n    return {\r\n        value,\r\n        isValid,\r\n        hasError,\r\n        errorMsg,\r\n        valueChangeHandler,\r\n        customValueChangeHandler,\r\n        inputBlurHandler,\r\n        setIsTouched,\r\n        setValue,\r\n    };\r\n}\r\n\r\nexport default useInput;\r\n"
+        }
+    ]
+}

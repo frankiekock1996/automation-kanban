@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/hooks/useModal.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1745849331749,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1745849331749,
+            "name": "Commit-0",
+            "content": "import {\r\n    useState,\r\n    useEffect,\r\n    FC,\r\n    PropsWithChildren,\r\n    MouseEventHandler\r\n  } from \"react\";\r\n  import ReactDOM from \"react-dom\";\r\n  import ModalElem from \"../app/(main)/(pages)/(kanban)/_components/Modals/Modal\";\r\n  \r\n  type ModalHook = {\r\n    isOpen: boolean;\r\n    toggle: () => void;\r\n    close: () => void;\r\n    open: () => void;\r\n    Component: FC<PropsWithChildren>;\r\n  };\r\n  \r\n  const useModal = (options?: {\r\n    type?: \"mobileMenu\" | \"danger\";\r\n    dangerHeader?: string;\r\n    dangerMessage?: string;\r\n    onConfirmDelete?: MouseEventHandler<HTMLButtonElement>;\r\n  }): ModalHook => {\r\n    const [isOpen, setIsOpen] = useState(false);\r\n    const [modalRoot, setModalRoot] = useState<HTMLElement | null>(null);\r\n    const toggle = () => {\r\n      setIsOpen(!isOpen);\r\n    };\r\n  \r\n    const close = () => {\r\n      setIsOpen(false);\r\n    };\r\n  \r\n    const open = () => {\r\n      setIsOpen(true);\r\n    };\r\n  \r\n    useEffect(() => {\r\n      close();\r\n    }, []);\r\n  \r\n    useEffect(() => {\r\n      setModalRoot(document.getElementById(\"modal-root\"));\r\n    }, []);\r\n  \r\n    const Component = (props: PropsWithChildren<{}>) => {\r\n      return isOpen && modalRoot\r\n        ? ReactDOM.createPortal(\r\n            <ModalElem closeModal={toggle} options={options}>\r\n              {props.children}\r\n            </ModalElem>,\r\n            modalRoot\r\n          )\r\n        : null;\r\n    };\r\n  \r\n    return {\r\n      isOpen,\r\n      toggle,\r\n      close,\r\n      open,\r\n      Component\r\n    };\r\n  };\r\n  \r\n  export default useModal;\r\n  "
+        }
+    ]
+}
