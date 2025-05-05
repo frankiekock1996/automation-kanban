@@ -102,7 +102,7 @@ export const menuOptions = [
   { name: 'Connections', Component: Category, href: '/connections' },
   { name: 'Billboard', Component: Teamwork, href: '/billboard' },
   { name: 'Templates', Component: Templates, href: '/templates' },
-  { name: 'Logs', Component: Logs, href: '/logs' },
+  { name: 'Calendar', Component: Logs, href: '/calendar' },
 ]
 
 export const EditorCanvasDefaultCardTypes = {

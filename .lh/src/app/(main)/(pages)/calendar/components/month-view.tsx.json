@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/month-view.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746279492534,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746332552261,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,19 @@\n-import React from 'react'\r\n+import { getMonth } from '@/lib/getTime'\r\n+import React, { Fragment } from 'react'\r\n+import MonthViewBox from './month-view-box'\r\n \r\n+const currentMonth=getMonth()\r\n+\r\n export default function MonthView() {\r\n   return (\r\n-    <div>MonthView</div>\r\n+    <section className='grid grid-cols-7 grid-rows-5 lg:h-[100vh]'>\r\n+     {currentMonth.map((row, i) => (\r\n+        <Fragment key={i}>\r\n+          {row.map((day, index) => (\r\n+           <MonthViewBox key={index} day={day} rowIndex={i} />\r\n+          ))}\r\n+        </Fragment>\r\n+      ))}\r\n+    </section>\r\n   )\r\n }\r\n"
+                },
+                {
+                    "date": 1746360427259,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,21 @@\n-import { getMonth } from '@/lib/getTime'\r\n+'use client'\r\n+\r\n import React, { Fragment } from 'react'\r\n import MonthViewBox from './month-view-box'\r\n+import { useDateStore } from '@/lib/store';\r\n \r\n-const currentMonth=getMonth()\r\n+export default function MonthView() {\r\n \r\n-export default function MonthView() {\r\n+  const { twoDMonthArray } = useDateStore();\r\n   return (\r\n     <section className='grid grid-cols-7 grid-rows-5 lg:h-[100vh]'>\r\n-     {currentMonth.map((row, i) => (\r\n+     {twoDMonthArray.map((row, i) => (\r\n         <Fragment key={i}>\r\n           {row.map((day, index) => (\r\n-           <MonthViewBox key={index} day={day} rowIndex={i} />\r\n+            <MonthViewBox key={index} day={day} rowIndex={i} />\r\n           ))}\r\n         </Fragment>\r\n       ))}\r\n     </section>\r\n   )\r\n-}\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1746279492534,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\nexport default function MonthView() {\r\n  return (\r\n    <div>MonthView</div>\r\n  )\r\n}\r\n"
+        }
+    ]
+}

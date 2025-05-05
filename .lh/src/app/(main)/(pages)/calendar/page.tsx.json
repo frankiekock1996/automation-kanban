@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/page.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746265627469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746279492549,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,14 @@\n+import React from 'react'\r\n+import Header from './components/header/Header'\r\n+import MainView from './components/MainView'\r\n+\r\n+const CalendarPage = () => {\r\n+  return (\r\n+    <div className=''>\r\n+      <Header/>\r\n+      <MainView/>\r\n+    </div>\r\n+  )\r\n+}\r\n+\r\n+export default CalendarPage\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1746265627469,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport Header from './components/header/Header'\r\n\r\nconst CalendarPage = () => {\r\n  return (\r\n    <div className=''>\r\n      <Header/>\r\n    </div>\r\n  )\r\n}\r\n\r\nexport default CalendarPage"
+        }
+    ]
+}

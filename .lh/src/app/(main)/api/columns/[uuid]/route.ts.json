@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/columns/[uuid]/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746023434012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746023434012,
+            "name": "Commit-0",
+            "content": "import { db } from \"@/lib/db\";\r\nimport { auth } from \"@clerk/nextjs/server\";\r\nimport { NextResponse } from \"next/server\";\r\n\r\ntype UpdatedColumnData = {\r\n  name?: string;\r\n  color?: string;\r\n  position?: number;\r\n};\r\n\r\nconst decrementHigherPositions = (boardUUID: string, position: number) => {\r\n  return db.column.updateMany({\r\n    where: {\r\n      board_uuid: boardUUID,\r\n      position: { gt: position }\r\n    },\r\n    data: {\r\n      position: { decrement: 1 }\r\n    }\r\n  });\r\n};\r\n\r\nconst incrementFromPosition = (boardUUID: string, position: number) => {\r\n  return db.column.updateMany({\r\n    where: {\r\n      board_uuid: boardUUID,\r\n      position: { gte: position }\r\n    },\r\n    data: {\r\n      position: { increment: 1 }\r\n    }\r\n  });\r\n};\r\n\r\nexport async function PUT(req: Request, { params }: { params: { uuid: string } }) {\r\n  const { userId } = auth();\r\n  if (!userId) return NextResponse.json(\"Unauthorized\", { status: 401 });\r\n\r\n  const columnUUID = params.uuid;\r\n  const columnData: UpdatedColumnData = await req.json();\r\n\r\n  const currentColumnData = await db.column.findFirst({\r\n    where: {\r\n      uuid: columnUUID,\r\n      clerkId: userId\r\n    }\r\n  });\r\n\r\n  if (!currentColumnData) {\r\n    return NextResponse.json(\"Column not found\", { status: 404 });\r\n  }\r\n\r\n  const { name, color, position } = columnData;\r\n  const payload = {\r\n    name: name ?? currentColumnData.name,\r\n    color: color ?? currentColumnData.color,\r\n    position: position ?? currentColumnData.position\r\n  };\r\n\r\n  try {\r\n    const response = await db.$transaction(async (tx) => {\r\n      if (position !== undefined && position !== currentColumnData.position) {\r\n        await decrementHigherPositions(currentColumnData.board_uuid, currentColumnData.position);\r\n        await incrementFromPosition(currentColumnData.board_uuid, position);\r\n      }\r\n\r\n      return await tx.column.update({\r\n        where: { uuid: columnUUID },\r\n        data: payload\r\n      });\r\n    });\r\n\r\n    return NextResponse.json(response, { status: 200 });\r\n  } catch (error: any) {\r\n    console.error(error);\r\n    return NextResponse.json(\"Something went wrong\", { status: 500 });\r\n  }\r\n}\r\n"
+        }
+    ]
+}

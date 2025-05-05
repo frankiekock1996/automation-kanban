@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/tasks/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746106982051,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746106982051,
+            "name": "Commit-0",
+            "content": "import { db } from \"@/lib/db\";\r\nimport { v4 as uuidv4 } from \"uuid\";\r\nimport { currentUser } from \"@clerk/nextjs/server\";\r\nimport { NextResponse, NextRequest } from \"next/server\";\r\n\r\ntype BoardInput = {\r\n  name: string;\r\n  columns: { name: string; color: string }[];\r\n};\r\n\r\n// GET all boards for current user\r\nexport async function GET() {\r\n  const user = await currentUser();\r\n  if (!user) return NextResponse.json(\"Unauthorized\", { status: 401 });\r\n\r\n  try {\r\n    const boards = await db.board.findMany({\r\n      where: { user: { id: user.id } },\r\n      include: { columns: true }\r\n    });\r\n\r\n    return NextResponse.json(boards, { status: 200 });\r\n  } catch (error) {\r\n    return NextResponse.json({ error }, { status: 500 });\r\n  }\r\n}\r\n\r\n// POST create new board with columns\r\nexport async function POST(req: NextRequest) {\r\n  const user = await currentUser();\r\n  if (!user) return NextResponse.json(\"Unauthorized\", { status: 401 });\r\n\r\n  const data: BoardInput = await req.json();\r\n\r\n  if (!data.name || data.name.trim().length < 1 || data.name.trim().length > 30) {\r\n    return NextResponse.json({ error: \"Invalid board name\" }, { status: 400 });\r\n  }\r\n\r\n  const nameSet = new Set();\r\n  if (data.columns.some(col => nameSet.size === (nameSet.add(col.name), nameSet.size))) {\r\n    return NextResponse.json({ error: \"Column names must be unique\" }, { status: 400 });\r\n  }\r\n\r\n  const boardId = uuidv4();\r\n  const columns = data.columns.map((column, i) => ({\r\n    name: column.name,\r\n    color: column.color,\r\n    position: i,\r\n    userId: user.id,\r\n    uuid: uuidv4()\r\n  }));\r\n\r\n  try {\r\n    const newBoard = await db.board.create({\r\n      data: {\r\n        name: data.name,\r\n        uuid: boardId,\r\n        user: { connect: { id: user.id } },\r\n        columns: {\r\n          createMany: { data: columns }\r\n        }\r\n      }\r\n    });\r\n\r\n    return NextResponse.json(newBoard, { status: 201 });\r\n  } catch (error) {\r\n    console.error(error);\r\n    return NextResponse.json({ error }, { status: 500 });\r\n  }\r\n}\r\n"
+        }
+    ]
+}

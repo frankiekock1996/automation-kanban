@@ -1,0 +1,34 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/header/right-side.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 4,
+            "patches": [
+                {
+                    "date": 1746267001506,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746269451110,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,8 @@\n import React from 'react'\r\n \r\n-function RightSide() {\r\n+export default function HeaderRight() {\r\n   return (\r\n-    <div>RightSide</div>\r\n+    <div>LeftSide</div>\r\n   )\r\n }\r\n\\ No newline at end of file\n \r\n-export default RightSide\n"
+                },
+                {
+                    "date": 1746273958432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,8 @@\n import React from 'react'\r\n \r\n export default function HeaderRight() {\r\n   return (\r\n-    <div>LeftSide</div>\r\n+    <div>RightSide</div>\r\n   )\r\n }\r\n+\r\n"
+                },
+                {
+                    "date": 1746276222918,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,21 @@\n+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'\r\n import React from 'react'\r\n \r\n export default function HeaderRight() {\r\n-  return (\r\n-    <div>RightSide</div>\r\n-  )\r\n-}\r\n-\r\n+    return (\r\n+        <div className=\"flex items-center space-x-4\">\r\n+        {/* <SearchComponent /> */}\r\n+        <Select >\r\n+          <SelectTrigger className=\"w-24 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0\">\r\n+            <SelectValue placeholder=\"Month\" />\r\n+          </SelectTrigger>\r\n+          <SelectContent>\r\n+            <SelectItem value=\"month\">Month</SelectItem>\r\n+            <SelectItem value=\"week\">Week</SelectItem>\r\n+            <SelectItem value=\"day\">Day</SelectItem>\r\n+          </SelectContent>\r\n+        </Select>\r\n+    \r\n+      </div>\r\n+      )\r\n+    }\r\n"
+                },
+                {
+                    "date": 1746358193811,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,21 +1,27 @@\n+\"use client\";\r\n+\r\n import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'\r\n+import { useViewStore } from '@/lib/store';\r\n import React from 'react'\r\n \r\n export default function HeaderRight() {\r\n-    return (\r\n-        <div className=\"flex items-center space-x-4\">\r\n-        {/* <SearchComponent /> */}\r\n-        <Select >\r\n-          <SelectTrigger className=\"w-24 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0\">\r\n-            <SelectValue placeholder=\"Month\" />\r\n-          </SelectTrigger>\r\n-          <SelectContent>\r\n-            <SelectItem value=\"month\">Month</SelectItem>\r\n-            <SelectItem value=\"week\">Week</SelectItem>\r\n-            <SelectItem value=\"day\">Day</SelectItem>\r\n-          </SelectContent>\r\n-        </Select>\r\n-    \r\n-      </div>\r\n-      )\r\n-    }\r\n+\r\n+  const { setView } = useViewStore();\r\n+\r\n+  return (\r\n+    <div className=\"flex items-center space-x-4\">\r\n+    {/* <SearchComponent /> */}\r\n+    <Select onValueChange={(v) => setView(v)}>\r\n+      <SelectTrigger className=\"w-24 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0\">\r\n+        <SelectValue placeholder=\"Month\" />\r\n+      </SelectTrigger>\r\n+      <SelectContent>\r\n+        <SelectItem value=\"month\">Month</SelectItem>\r\n+        <SelectItem value=\"week\">Week</SelectItem>\r\n+        <SelectItem value=\"day\">Day</SelectItem>\r\n+      </SelectContent>\r\n+    </Select>\r\n+\r\n+    </div>\r\n+  )\r\n+}\r\n"
+                }
+            ],
+            "date": 1746267001506,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\nfunction RightSide() {\r\n  return (\r\n    <div>RightSide</div>\r\n  )\r\n}\r\n\r\nexport default RightSide"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/MainView.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1746279492535,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746281629210,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,12 @@\n import React from 'react'\r\n import MonthView from './month-view'\r\n+import SideBar from './sidebar/SideBar'\r\n \r\n export default function MainView() {\r\n   return (\r\n     <div className=\"flex\">\r\n-      {/* SideBar */}\r\n+      <SideBar/>\r\n       <div className=\"w-full flex-1\">\r\n         <MonthView/>\r\n       </div>\r\n     </div>\r\n"
+                },
+                {
+                    "date": 1746358193808,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,24 @@\n+\"use client\";\r\n+\r\n import React from 'react'\r\n import MonthView from './month-view'\r\n import SideBar from './sidebar/SideBar'\r\n+import { useViewStore } from '@/lib/store';\r\n+import WeekView from './week-view';\r\n+import DayView from './day-view';\r\n \r\n export default function MainView() {\r\n+\r\n+  const { selectedView } = useViewStore();\r\n+  \r\n   return (\r\n     <div className=\"flex\">\r\n       <SideBar/>\r\n       <div className=\"w-full flex-1\">\r\n-        <MonthView/>\r\n+        {selectedView === \"month\" && <MonthView />}\r\n+        {selectedView === \"week\" && <WeekView />}\r\n+        {selectedView === \"day\" && <DayView />}\r\n       </div>\r\n     </div>\r\n   )\r\n }\r\n"
+                }
+            ],
+            "date": 1746279492535,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\nimport MonthView from './month-view'\r\n\r\nexport default function MainView() {\r\n  return (\r\n    <div className=\"flex\">\r\n      {/* SideBar */}\r\n      <div className=\"w-full flex-1\">\r\n        <MonthView/>\r\n      </div>\r\n    </div>\r\n  )\r\n}\r\n"
+        }
+    ]
+}

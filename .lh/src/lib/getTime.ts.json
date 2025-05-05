@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/lib/getTime.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746282087077,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746282087077,
+            "name": "Commit-0",
+            "content": "import dayjs from \"dayjs\";\r\nimport weekOfYear from \"dayjs/plugin/weekOfYear\";\r\ndayjs.extend(weekOfYear);\r\n\r\nexport const isCurrentDay = (day: dayjs.Dayjs) => {\r\n  return day.isSame(dayjs(), \"day\");\r\n};\r\n\r\nexport const getMonth = (month = dayjs().month()) => {\r\n  const year = dayjs().year();\r\n  const firstDayofMonth = dayjs().set(\"month\", month).startOf(\"month\").day();\r\n\r\n  let dayCounter = -firstDayofMonth;\r\n\r\n  return Array.from({ length: 5 }, () =>\r\n    Array.from({ length: 7 }, () => dayjs(new Date(year, month, ++dayCounter))),\r\n  );\r\n};\r\n\r\nexport const getWeekDays = (date: dayjs.Dayjs) => {\r\n  const startOfWeek = date.startOf(\"week\");\r\n\r\n  const weekDates = [];\r\n\r\n  // Loop through the 7 days of the week\r\n  for (let i = 0; i < 7; i++) {\r\n    const currentDate = startOfWeek.add(i, \"day\");\r\n    weekDates.push({\r\n      currentDate,\r\n      today:\r\n        currentDate.toDate().toDateString() === dayjs().toDate().toDateString(),\r\n      isCurrentDay,\r\n    });\r\n  }\r\n\r\n  return weekDates;\r\n};\r\n\r\nexport const getHours = Array.from({ length: 24 }, (_, i) =>\r\n  dayjs().startOf(\"day\").add(i, \"hour\"),\r\n);\r\n\r\n\r\n// Function to generate weeks of the month dynamically\r\n\r\n\r\nexport const getWeeks  = (monthIndex: number) => {\r\n  const year = dayjs().year();\r\n  const firstDayOfMonth = dayjs(new Date(year, monthIndex, 1));\r\n  const lastDayOfMonth = dayjs(new Date(year, monthIndex + 1, 0)); // Last day of the month\r\n\r\n  const weeks: number[] = [];\r\n\r\n  // Loop from the first day to the last day of the month\r\n  let currentDay = firstDayOfMonth;\r\n  while (\r\n    currentDay.isBefore(lastDayOfMonth) ||\r\n    currentDay.isSame(lastDayOfMonth)\r\n  ) {\r\n    const weekNumber = currentDay.week();   //This requires the WeekOfYear plugin to work as imported above\r\n    if (!weeks.includes(weekNumber)) {\r\n      weeks.push(weekNumber);\r\n    }\r\n    currentDay = currentDay.add(1, \"day\"); // Move to the next day\r\n  }\r\n\r\n  return weeks;\r\n}"
+        }
+    ]
+}

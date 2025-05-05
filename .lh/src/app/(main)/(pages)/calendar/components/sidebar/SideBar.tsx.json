@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/sidebar/SideBar.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746281548873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746281548873,
+            "name": "Commit-0",
+            "content": "import { cn } from '@/lib/utils'\r\nimport React from 'react'\r\nimport Create from './create'\r\nimport SideBarCalendar from './side-bar-calendar'\r\nimport SearchUsers from './search-users'\r\nimport MyCalendars from './my-calendar'\r\n\r\nexport default function SideBar() {\r\n  return (\r\n    <aside\r\n      className={cn(\r\n        \"w-92 hidden border-t px-2 py-3 transition-all duration-300 ease-in-out lg:block\"\r\n      )}\r\n    >\r\n      <Create/>\r\n      <SideBarCalendar/>\r\n      <SearchUsers/>\r\n      {/* <MyCalendars/> */}\r\n    </aside>\r\n  )\r\n}"
+        }
+    ]
+}

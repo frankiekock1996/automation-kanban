@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/tasks/[uuid]/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746098945838,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746098945838,
+            "name": "Commit-0",
+            "content": "import { NextRequest, NextResponse } from 'next/server';\r\nimport { auth } from '@clerk/nextjs/server';\r\nimport { db } from '@/lib/db';\r\nimport { z } from 'zod';\r\nimport { v4 as uuidv4 } from 'uuid';\r\n\r\nconst UpdateTaskSchema = z.object({\r\n  name: z.string().optional(),\r\n  description: z.string().optional(),\r\n  position: z.number().optional(),\r\n  column_uuid: z.string().optional(),\r\n});\r\n\r\nexport async function PATCH(req: NextRequest, { params }: { params: { uuid: string } }) {\r\n  try {\r\n    const { userId } = auth();\r\n    if (!userId) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });\r\n\r\n    const body = await req.json();\r\n    const validated = UpdateTaskSchema.parse(body);\r\n\r\n    const task = await db.task.findUnique({\r\n      where: { uuid: params.uuid },\r\n      include: { column: { include: { board: true } } },\r\n    });\r\n\r\n    if (!task) return NextResponse.json({ message: 'Task not found' }, { status: 404 });\r\n    if (task.column.board.clerkId !== userId)\r\n      return NextResponse.json({ message: 'Forbidden' }, { status: 403 });\r\n\r\n    const updatedTask = await db.task.update({\r\n      where: { uuid: params.uuid },\r\n      data: validated,\r\n    });\r\n\r\n    return NextResponse.json(updatedTask);\r\n  } catch (error) {\r\n    console.error(error);\r\n    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });\r\n  }\r\n}\r\n\r\nexport async function DELETE(_: NextRequest, { params }: { params: { uuid: string } }) {\r\n  try {\r\n    const { userId } = auth();\r\n    if (!userId) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });\r\n\r\n    const task = await db.task.findUnique({\r\n      where: { uuid: params.uuid },\r\n      include: { column: { include: { board: true } } },\r\n    });\r\n\r\n    if (!task) return NextResponse.json({ message: 'Task not found' }, { status: 404 });\r\n    if (task.column.board.clerkId !== userId)\r\n      return NextResponse.json({ message: 'Forbidden' }, { status: 403 });\r\n\r\n    await db.task.delete({ where: { uuid: params.uuid } });\r\n\r\n    return NextResponse.json({ message: 'Task deleted' });\r\n  } catch (error) {\r\n    console.error(error);\r\n    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });\r\n  }\r\n}\r\n"
+        }
+    ]
+}

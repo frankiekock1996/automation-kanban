@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/boards/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746014547565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746014547565,
+            "name": "Commit-0",
+            "content": "import { NextApiRequest, NextApiResponse } from \"next\";\r\nimport { db } from \"@/lib/db\";\r\nimport { v4 as uuidv4 } from \"uuid\";\r\nimport { currentUser } from \"@clerk/nextjs/server\";\r\n\r\ntype Board = {\r\n  name: string;\r\n  columns?: Column[];\r\n  uuid: string;\r\n  userId: string;\r\n};\r\n\r\ntype Column = {\r\n  name: string;\r\n  color: string;\r\n  position: number;\r\n  uuid: string;\r\n  userId: string;\r\n};\r\n\r\nconst validateBoard = (board: Board) => {\r\n  if (!board.name) throw new Error(\"Board name is required\");\r\n  if (board.name.trim().length < 1) throw new Error(\"Board name cannot be empty\");\r\n  if (board.name.trim().length > 30) throw new Error(\"Board name cannot be longer than 30 characters\");\r\n};\r\n\r\nexport default async function handler(req: NextApiRequest, res: NextApiResponse) {\r\n  const user = await currentUser();\r\n  if (!user || !user.id) {\r\n    return res.status(401).json({ error: \"Unauthorized\" });\r\n  }\r\n\r\n  switch (req.method) {\r\n    case \"POST\":\r\n      return await createBoard(req, res, user.id);\r\n    case \"GET\":\r\n      return await getBoards(res, user.id);\r\n    default:\r\n      res.status(405).json({ error: \"Method not allowed\" });\r\n  }\r\n}\r\n\r\nconst getBoards = async (res: NextApiResponse, userId: string) => {\r\n  try {\r\n    const boards = await db.board.findMany({\r\n      where: {\r\n        user: {\r\n          id: userId // ✅ use relation filtering\r\n        }\r\n      },\r\n      include: {\r\n        columns: true\r\n      }\r\n    });\r\n    res.status(200).json(boards);\r\n  } catch (error) {\r\n    res.status(500).json({ error });\r\n  }\r\n};\r\n\r\nconst createBoard = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {\r\n  const boardData: {\r\n    name: string;\r\n    columns: { name: string; color: string }[];\r\n  } = req.body;\r\n\r\n  const board: Board = {\r\n    name: boardData.name,\r\n    uuid: uuidv4(),\r\n    userId\r\n  };\r\n\r\n  if (boardData.columns) {\r\n    const nameSet = new Set();\r\n    for (const col of boardData.columns) {\r\n      if (nameSet.has(col.name)) {\r\n        return res.status(400).json({ error: \"Column names must be unique\" });\r\n      }\r\n      nameSet.add(col.name);\r\n    }\r\n\r\n    board.columns = boardData.columns.map((col, index) => ({\r\n      name: col.name,\r\n      color: col.color,\r\n      position: index,\r\n      userId,\r\n      uuid: uuidv4()\r\n    }));\r\n  }\r\n\r\n  try {\r\n    validateBoard(board);\r\n  } catch (error: any) {\r\n    return res.status(400).json({ error: error.message });\r\n  }\r\n\r\n  try {\r\n    const createdBoard = await db.board.create({\r\n      data: {\r\n        name: board.name,\r\n        uuid: board.uuid,\r\n        user: {\r\n          connect: { id: board.userId }\r\n        },\r\n        columns: board.columns\r\n          ? {\r\n              create: board.columns\r\n            }\r\n          : undefined\r\n      },\r\n      include: {\r\n        columns: true\r\n      }\r\n    });\r\n\r\n    res.status(201).json(createdBoard);\r\n  } catch (error) {\r\n    console.error(error);\r\n    res.status(500).json({ error: \"Failed to create board\" });\r\n  }\r\n};\r\n"
+        }
+    ]
+}

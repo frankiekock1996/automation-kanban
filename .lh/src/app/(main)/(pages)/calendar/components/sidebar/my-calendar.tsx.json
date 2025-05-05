@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/sidebar/my-calendar.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746281548894,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746281548894,
+            "name": "Commit-0",
+            "content": "\"use client\";\r\n\r\nimport {\r\n  Accordion,\r\n  AccordionContent,\r\n  AccordionItem,\r\n  AccordionTrigger,\r\n} from \"@/components/ui/accordion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nconst myCalendars = [\r\n  { id: \"cal1\", title: \"Work\", color: \"accent-red-600\" },\r\n  { id: \"cal2\", title: \"Personal\", color: \"accent-blue-600\" },\r\n  { id: \"cal3\", title: \"Fitness\", color: \"accent-green-600\" },\r\n];\r\n\r\nexport default function MyCalendars() {\r\n  return (\r\n    <Accordion type=\"single\" collapsible>\r\n      <AccordionItem value=\"item-1\">\r\n        <AccordionTrigger className=\"justify-normal gap-32 text-sm hover:no-underline\">\r\n          My Calendars\r\n        </AccordionTrigger>\r\n        <AccordionContent className=\"grid gap-2\">\r\n          {myCalendars.map((cal) => (\r\n            <div className=\"items-top flex space-x-2\" key={cal.id}>\r\n              <input\r\n                type=\"checkbox\"\r\n                id={cal.id}\r\n                className={cn(\"h-4 w-4 rounded-none\", `${cal.color}`)}\r\n              />\r\n              <div className=\"grid gap-1.5 leading-none\">\r\n                <label\r\n                  htmlFor={cal.id}\r\n                  className=\"text-sm font-medium leading-none text-gray-600 peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\r\n                >\r\n                  {cal.title}\r\n                </label>\r\n              </div>\r\n            </div>\r\n          ))}\r\n        </AccordionContent>\r\n      </AccordionItem>\r\n    </Accordion>\r\n  );\r\n}"
+        }
+    ]
+}

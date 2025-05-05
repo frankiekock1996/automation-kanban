@@ -1,0 +1,22 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/header/Header.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1746265780756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746267194293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,11 @@\n-import React from 'react'\r\n+import HeaderLeft from \"./left-side\";\r\n+import HeaderRight from \"./right-side\";\r\n \r\n-function Header() {\r\n+export default function Header() {\r\n   return (\r\n-    <div>Header</div>\r\n-  )\r\n\\ No newline at end of file\n-}\r\n-\r\n-export default Header\n+    <div className=\"mx-3 flex items-center justify-between py-4\">\r\n+      <HeaderLeft />\r\n+      <HeaderRight />\r\n+    </div>\r\n+  );\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1746265780756,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\nfunction Header() {\r\n  return (\r\n    <div>Header</div>\r\n  )\r\n}\r\n\r\nexport default Header"
+        }
+    ]
+}

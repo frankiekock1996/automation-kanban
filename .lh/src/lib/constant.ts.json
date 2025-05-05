@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 3,
+            "activePatchIndex": 4,
             "patches": [
                 {
                     "date": 1726815072277,
@@ -20,6 +20,10 @@
                 {
                     "date": 1745841303521,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -99,9 +99,9 @@\n   { name: 'My Project', Component: Profile, href: '/profile' },\r\n   { name: 'Workflows', Component: Workflows, href: '/workflows' },\r\n   { name: 'Settings', Component: Settings, href: '/settings' },\r\n   { name: 'Connections', Component: Category, href: '/connections' },\r\n-  { name: 'View All Projects', Component: Teamwork, href: '/teamwork' },\r\n+  { name: 'Billboard', Component: Teamwork, href: '/billboard' },\r\n   { name: 'Templates', Component: Templates, href: '/templates' },\r\n   { name: 'Logs', Component: Logs, href: '/logs' },\r\n ]\r\n \r\n"
+                },
+                {
+                    "date": 1746264861368,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -101,9 +101,9 @@\n   { name: 'Settings', Component: Settings, href: '/settings' },\r\n   { name: 'Connections', Component: Category, href: '/connections' },\r\n   { name: 'Billboard', Component: Teamwork, href: '/billboard' },\r\n   { name: 'Templates', Component: Templates, href: '/templates' },\r\n-  { name: 'Logs', Component: Logs, href: '/logs' },\r\n+  { name: 'Calendar', Component: Logs, href: '/calendar' },\r\n ]\r\n \r\n export const EditorCanvasDefaultCardTypes = {\r\n   Email: { description: 'Send and email to a user', type: 'Action' },\r\n"
                 }
             ],
             "date": 1726815072277,

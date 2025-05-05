@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/lib/store.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746332540914,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746332540914,
+            "name": "Commit-0",
+            "content": "import dayjs, { Dayjs } from \"dayjs\";\r\nimport { create } from \"zustand\";\r\nimport { devtools, persist } from \"zustand/middleware\";\r\nimport { getMonth } from \"./getTime\";\r\n\r\ninterface ViewStoreType {\r\n  selectedView: string;\r\n  setView: (value: string) => void;\r\n}\r\n\r\ninterface DateStoreType {\r\n  userSelectedDate: Dayjs;\r\n  setDate: (value: Dayjs) => void;\r\n  twoDMonthArray: dayjs.Dayjs[][];\r\n  selectedMonthIndex: number;\r\n  setMonth: (index: number) => void;\r\n}\r\n\r\nexport type CalendarEventType = {\r\n  id: string;\r\n  title: string;\r\n  date: dayjs.Dayjs;\r\n  description: string;\r\n};\r\n\r\ntype EventStore = {\r\n  events: CalendarEventType[];\r\n  isPopoverOpen: boolean;\r\n  isEventSummaryOpen: boolean;\r\n  selectedEvent: CalendarEventType | null;\r\n  setEvents: (events: CalendarEventType[]) => void;\r\n  openPopover: () => void;\r\n  closePopover: () => void;\r\n  openEventSummary: (event: CalendarEventType) => void;\r\n  closeEventSummary: () => void;\r\n};\r\n\r\ninterface ToggleSideBarType {\r\n  isSideBarOpen: boolean;\r\n  setSideBarOpen: () => void;\r\n}\r\n\r\nexport const useViewStore = create<ViewStoreType>()(\r\n  devtools(\r\n    persist(\r\n      (set) => ({\r\n        selectedView: \"month\",\r\n        setView: (value: string) => {\r\n          set({ selectedView: value });\r\n        },\r\n      }),\r\n      { name: \"calendar_view\", skipHydration: true },\r\n    ),\r\n  ),\r\n);\r\n\r\nexport const useDateStore = create<DateStoreType>()(\r\n  devtools(\r\n    persist(\r\n      (set) => ({\r\n        userSelectedDate: dayjs(),\r\n        twoDMonthArray: getMonth(),\r\n        selectedMonthIndex: dayjs().month(),\r\n        setDate: (value: Dayjs) => {\r\n          set({ userSelectedDate: value });\r\n        },\r\n        setMonth: (index) => {\r\n          set({ twoDMonthArray: getMonth(index), selectedMonthIndex: index });\r\n        },\r\n      }),\r\n      { name: \"date_data\", skipHydration: true },\r\n    ),\r\n  ),\r\n);\r\n\r\nexport const useEventStore = create<EventStore>((set) => ({\r\n  events: [],\r\n  isPopoverOpen: false,\r\n  isEventSummaryOpen: false,\r\n  selectedEvent: null,\r\n  setEvents: (events) => set({ events }),\r\n  openPopover: () => set({ isPopoverOpen: true }),\r\n  closePopover: () => set({ isPopoverOpen: false }),\r\n  openEventSummary: (event) =>\r\n    set({ isEventSummaryOpen: true, selectedEvent: event }),\r\n  closeEventSummary: () =>\r\n    set({ isEventSummaryOpen: false, selectedEvent: null }),\r\n}));\r\n\r\nexport const useToggleSideBarStore = create<ToggleSideBarType>()(\r\n  (set, get) => ({\r\n    isSideBarOpen: true,\r\n    setSideBarOpen: () => {\r\n      set({ isSideBarOpen: !get().isSideBarOpen });\r\n    },\r\n  }),\r\n);"
+        }
+    ]
+}

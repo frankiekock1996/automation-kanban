@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/subtasks/[uuid].ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746025383935,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746025383935,
+            "name": "Commit-0",
+            "content": "// pages/api/subtasks/[uuid].ts\r\nimport type { NextApiRequest, NextApiResponse } from 'next';\r\nimport { db } from '@/lib/db';\r\nimport { validate } from 'uuid';\r\nimport { getAuth } from '@clerk/nextjs/server';\r\n\r\nexport default async function handler(req: NextApiRequest, res: NextApiResponse) {\r\n  const { userId } = getAuth(req);\r\n\r\n  if (!userId) {\r\n    return res.status(401).json({ error: 'Unauthorized' });\r\n  }\r\n\r\n  const subtaskUUID = req.query.uuid?.toString();\r\n  if (!subtaskUUID || !validate(subtaskUUID)) {\r\n    return res.status(400).json({ error: 'Invalid subtask UUID' });\r\n  }\r\n\r\n  try {\r\n    switch (req.method) {\r\n      case 'PUT': {\r\n        const { name, completed } = req.body;\r\n        \r\n        // Verify subtask ownership through board relationship\r\n        const existingSubtask = await db.subtask.findFirst({\r\n          where: {\r\n            uuid: subtaskUUID,\r\n            task: {\r\n              column: {\r\n                board: {\r\n                  clerkId: userId\r\n                }\r\n              }\r\n            }\r\n          }\r\n        });\r\n\r\n        if (!existingSubtask) {\r\n          return res.status(404).json({ error: 'Subtask not found' });\r\n        }\r\n\r\n        const updatedSubtask = await db.subtask.update({\r\n          where: { uuid: subtaskUUID },\r\n          data: {\r\n            ...(name !== undefined && { name }),\r\n            ...(completed !== undefined && { completed })\r\n          }\r\n        });\r\n\r\n        return res.status(200).json(updatedSubtask);\r\n      }\r\n      default:\r\n        return res.status(405).json({ error: 'Method not allowed' });\r\n    }\r\n  } catch (error) {\r\n    console.error('Error:', error);\r\n    return res.status(500).json({ error: 'Internal server error' });\r\n  }\r\n}"
+        }
+    ]
+}

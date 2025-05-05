@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/sidebar/search-users.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746281127448,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746281127448,
+            "name": "Commit-0",
+            "content": "import { Input } from \"@/components/ui/input\";\r\nimport { HiOutlineUsers } from \"react-icons/hi\";\r\n\r\n\r\nexport default function SearchUsers() {\r\n  return (\r\n    <div className=\"relative \">\r\n      <HiOutlineUsers className=\"absolute left-2.5 top-3 h-4 w-4 text-slate-600\" />\r\n      <Input\r\n        type=\"search\"\r\n        placeholder=\"Search for people\"\r\n        className=\"w-full rounded-lg pl-7 bg-slate-100 placeholder:text-slate-600 border-0 focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0\"\r\n      />\r\n    </div>\r\n  )\r\n}"
+        }
+    ]
+}

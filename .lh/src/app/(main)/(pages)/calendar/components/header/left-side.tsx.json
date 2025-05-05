@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/app/(main)/(pages)/calendar/components/header/left-side.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1746267001512,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1746273930399,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,42 @@\n+import { Button } from '@/components/ui/button'\r\n+import { Menu } from 'lucide-react'\r\n import React from 'react'\r\n+import Image from \"next/image\";\r\n+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from \"react-icons/md\";\r\n \r\n-function LeftSide() {\r\n+export default function HeaderLeft() {\r\n   return (\r\n\\ No newline at end of file\n-    <div>LeftSide</div>\r\n+    <div className=\"flex items-center gap-3\">\r\n+        {/* Sidebar Toggle and Calendar Icon */}\r\n+      <div className=\"hidden items-center lg:flex\">\r\n+      <Button\r\n+          variant=\"ghost\"\r\n+          className=\"rounded-full p-2\">\r\n+            <Menu className=\"size-6\" />\r\n+      </Button>\r\n+         <Image\r\n+          src={`/img/calendar_${todaysDate.date().toString()}_2x.png`}\r\n+          width={40}\r\n+          height={40}\r\n+          alt=\"icon\"\r\n+        />\r\n+        <h1 className=\"text-xl\">Calendar</h1>\r\n+      </div>\r\n+       {/* Today Button */}\r\n+       <Button variant=\"outline\">\r\n+        Today\r\n+      </Button>\r\n+      {/* Navigation Controls */}\r\n+      <div className=\"flex items-center gap-3\">\r\n+        <MdKeyboardArrowLeft\r\n+          className=\"size-6 cursor-pointer font-bold\"\r\n+        />\r\n+        <MdKeyboardArrowRight\r\n+          className=\"size-6 cursor-pointer font-bold\"\r\n+        />\r\n+      </div>\r\n+\r\n+    </div>\r\n   )\r\n }\r\n \r\n-export default LeftSide\n"
+                },
+                {
+                    "date": 1746274000473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           className=\"rounded-full p-2\">\r\n             <Menu className=\"size-6\" />\r\n       </Button>\r\n          <Image\r\n-          src={`/img/calendar_${todaysDate.date().toString()}_2x.png`}\r\n+          src={`/img/calendar_1_2x.png`}\r\n           width={40}\r\n           height={40}\r\n           alt=\"icon\"\r\n         />\r\n@@ -38,4 +38,5 @@\n \r\n     </div>\r\n   )\r\n }\r\n+\r\n"
+                },
+                {
+                    "date": 1746274637792,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,9 +34,12 @@\n         <MdKeyboardArrowRight\r\n           className=\"size-6 cursor-pointer font-bold\"\r\n         />\r\n       </div>\r\n-\r\n+      {/* Current Month and Year Display */}\r\n+      <h1 className=\"hidden text-xl lg:block\">\r\n+       April 8\r\n+      </h1>\r\n     </div>\r\n   )\r\n }\r\n \r\n"
+                },
+                {
+                    "date": 1746358414773,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           className=\"rounded-full p-2\">\r\n             <Menu className=\"size-6\" />\r\n       </Button>\r\n          <Image\r\n-          src={`/img/calendar_1_2x.png`}\r\n+          src={`/public/calendar_1_2x.png`}\r\n           width={40}\r\n           height={40}\r\n           alt=\"icon\"\r\n         />\r\n"
+                },
+                {
+                    "date": 1746358577178,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -13,14 +13,9 @@\n           variant=\"ghost\"\r\n           className=\"rounded-full p-2\">\r\n             <Menu className=\"size-6\" />\r\n       </Button>\r\n-         <Image\r\n-          src={`/public/calendar_1_2x.png`}\r\n-          width={40}\r\n-          height={40}\r\n-          alt=\"icon\"\r\n-        />\r\n+      <Image src=\"/calendar_1_2x.png\" width={40} height={40} alt=\"icon\" />\r\n         <h1 className=\"text-xl\">Calendar</h1>\r\n       </div>\r\n        {/* Today Button */}\r\n        <Button variant=\"outline\">\r\n"
+                }
+            ],
+            "date": 1746267001512,
+            "name": "Commit-0",
+            "content": "import React from 'react'\r\n\r\nfunction LeftSide() {\r\n  return (\r\n    <div>LeftSide</div>\r\n  )\r\n}\r\n\r\nexport default LeftSide"
+        }
+    ]
+}

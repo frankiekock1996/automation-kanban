@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/(main)/api/columns/route.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1746023434012,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1746023434011,
+            "name": "Commit-0",
+            "content": "import { db } from \"@/lib/db\";\r\nimport { v4 as uuidv4, validate } from \"uuid\";\r\nimport { NewColumn } from \"@/types\";\r\nimport { NextResponse } from \"next/server\";\r\n// import { getAuth } from \"@clerk/nextjs/server\";\r\nimport { auth } from \"@clerk/nextjs/server\";\r\n\r\n\r\n\r\nconst isNewColumn = (column: unknown): column is NewColumn => {\r\n  return (\r\n    typeof column === \"object\" &&\r\n    column !== null &&\r\n    \"board_uuid\" in column &&\r\n    \"name\" in column &&\r\n    \"color\" in column\r\n  );\r\n};\r\n\r\nexport async function POST(req: Request) {\r\n    const { userId } = auth(); // Clerk user ID\r\n  if (!userId) return NextResponse.json({ error: \"Unauthorized\" }, { status: 401 });\r\n\r\n  const columnData: unknown = await req.json();\r\n\r\n  if (!isNewColumn(columnData)) {\r\n    return NextResponse.json({ error: \"Invalid column data\" }, { status: 400 });\r\n  }\r\n\r\n  if (!columnData.board_uuid || !validate(columnData.board_uuid)) {\r\n    return NextResponse.json({ error: \"Invalid board UUID\" }, { status: 400 });\r\n  }\r\n\r\n  if (columnData.name.length < 1 || columnData.name.length > 20) {\r\n    return NextResponse.json(\r\n      { error: \"Column name must be between 1 and 20 characters\" },\r\n      { status: 400 }\r\n    );\r\n  }\r\n\r\n  const boardData = await db.board.findFirst({\r\n    where: {\r\n      uuid: columnData.board_uuid,\r\n      clerkId: userId,\r\n    },\r\n    include: {\r\n      columns: true, // Required to access board.columns\r\n    },\r\n  });\r\n\r\n  if (!boardData) {\r\n    return NextResponse.json({ error: \"Board not found\" }, { status: 404 });\r\n  }\r\n\r\n  const columnExists = boardData.columns.some(\r\n    (col) => col.name.toLowerCase() === columnData.name.toLowerCase()\r\n  );\r\n  if (columnExists) {\r\n    return NextResponse.json(\r\n      { error: \"Column with this name already exists on this board\" },\r\n      { status: 400 }\r\n    );\r\n  }\r\n\r\n  const positionSet = columnData.position !== undefined;\r\n  columnData.position = columnData.position ?? boardData.columns.length;\r\n\r\n  try {\r\n    const response = await db.$transaction(async (tx) => {\r\n      if (positionSet) {\r\n        await tx.column.updateMany({\r\n          where: {\r\n            board_uuid: columnData.board_uuid,\r\n            position: {\r\n              gte: columnData.position,\r\n            },\r\n          },\r\n          data: {\r\n            position: {\r\n              increment: 1,\r\n            },\r\n          },\r\n        });\r\n      }\r\n\r\n      return await tx.column.create({\r\n        data: {\r\n          name: columnData.name,\r\n          color: columnData.color,\r\n          position: columnData.position ?? 0,\r\n          uuid: uuidv4(),\r\n          clerkId: userId, // Use Clerk ID\r\n          board: {\r\n            connect: {\r\n              uuid: columnData.board_uuid,\r\n            },\r\n          },\r\n        },\r\n      });\r\n    });\r\n\r\n    return NextResponse.json(response, { status: 200 });\r\n  } catch (err) {\r\n    console.error(err);\r\n    return NextResponse.json(\"Error creating column\", { status: 500 });\r\n  }\r\n}\r\n"
+        }
+    ]
+}
